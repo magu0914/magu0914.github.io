@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inoue Hinata — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf7;
+  --bg-2: #f0ecdf;
+  --ink: #2a2a2a;
+  --ink-2: #555;
+  --ink-3: #9a9a90;
+  --accent: #6b8caf;
+  --font-display: "Playfair Display", "Noto Serif JP", serif;
+  --font-body: "Inter", "Noto Serif JP", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.ital { font-style: italic; }
+::selection { background: var(--accent); color: var(--bg); }
+
+/* Header */
+header {
+  border-bottom: 1px solid var(--ink);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.head-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 18px 40px;
+  gap: 24px;
+}
+.head-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; }
+.head-c {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+}
+.head-r {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.head-r a { transition: color 0.2s; }
+.head-r a:hover { color: var(--accent); }
+
+/* Masthead */
+.masthead {
+  border-bottom: 1px solid var(--ink);
+  padding: 40px;
+  text-align: center;
+}
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
+  margin-bottom: 24px;
+}
+.masthead-top .line-h { flex: 1; height: 1px; background: var(--ink-3); margin: 0 20px; }
+.masthead h1.title {
+  font-family: var(--font-display);
+  font-size: clamp(68px, 12vw, 152px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.masthead h1 .ital { font-style: italic; color: var(--accent); }
+.masthead .subtitle {
+  margin-top: 20px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--ink-2);
+}
+
+/* Lead */
+.lead-section { padding: 80px 0; border-bottom: 1px solid var(--ink); }
+.lead-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  gap: 40px;
+  align-items: start;
+}
+.meta { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-2); }
+.meta strong { display: block; color: var(--ink-3); margin-bottom: 4px; font-weight: 400; }
+.lead-text {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.6;
+  font-weight: 400;
+}
+.drop {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 76px;
+  line-height: 0.85;
+  padding: 6px 12px 0 0;
+  color: var(--accent);
+}
+
+/* Section */
+section { padding: 80px 0; border-bottom: 1px solid var(--ink); }
+.chap {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 60px;
+}
+.chap-no {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
+  border-top: 1px solid var(--ink);
+  padding-top: 12px;
+}
+.chap-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.chap-title .ital { font-style: italic; color: var(--accent); }
+.chap-sub {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
+}
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.about-col p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink-2);
+  margin-bottom: 20px;
+  line-height: 1.9;
+}
+.about-col p strong { color: var(--ink); font-weight: 500; }
+.about-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.6;
+  padding: 32px;
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  text-align: center;
+}
+
+/* Skills */
+#skills { background: var(--bg-2); }
+.skill-table { width: 100%; border-top: 2px solid var(--ink); }
+.skill-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 200px;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ink);
+  align-items: center;
+  transition: padding 0.2s;
+}
+.skill-row:hover { padding-left: 16px; }
+.skill-row .num { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+.skill-row .name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+}
+.skill-row .name .ital { font-style: italic; }
+.skill-row .desc { font-size: 14px; color: var(--ink-2); }
+.skill-row .level {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  text-align: right;
+  letter-spacing: 0.1em;
+}
+.skill-row .level strong {
+  display: block;
+  color: var(--accent);
+  font-size: 14px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* Works */
+.works-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px 80px; }
+.work-item { border-top: 1px solid var(--ink); padding-top: 24px; }
+.work-item .work-no {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.15em;
+}
+.work-item h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.work-item h3 .ital { font-style: italic; }
+.work-item .vis {
+  aspect-ratio: 3 / 2;
+  margin-bottom: 20px;
+  border: 1px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 56px;
+}
+.work-item .vis.v1 { background: linear-gradient(135deg, #f0ecdf 0%, #d8d2c0 100%); color: rgba(0,0,0,0.3); }
+.work-item .vis.v2 { background: #2a2a2a; color: rgba(250,250,247,0.35); }
+.work-item .vis.v3 { background: var(--accent); color: rgba(255,255,255,0.7); }
+.work-item .vis.v4 {
+  background: repeating-linear-gradient(45deg, var(--bg-2), var(--bg-2) 10px, var(--bg) 10px, var(--bg) 20px);
+  color: rgba(0,0,0,0.4);
+}
+.work-item p.desc { font-size: 14px; color: var(--ink-2); margin-bottom: 16px; line-height: 1.7; }
+.work-item .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.work-item .work-links {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.work-item .work-links a {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.work-item .work-links a:hover {
+  border-bottom-color: var(--accent);
+}
+.work-item .work-links a::after {
+  content: " →";
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.work-item .work-links a:hover::after {
+  transform: translateX(4px);
+}
+
+/* Contact */
+#contact { background: var(--ink); color: var(--bg); text-align: center; }
+#contact .chap-no { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.3); }
+#contact .chap-title { color: var(--bg); }
+#contact .chap-sub { color: rgba(255,255,255,0.5); }
+.contact-inner { max-width: 900px; margin: 0 auto; }
+.big {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 48px;
+}
+.big .ital { font-style: italic; color: var(--accent); }
+.email {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(24px, 4vw, 40px);
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  margin-bottom: 64px;
+  transition: color 0.2s;
+}
+.email:hover { color: var(--accent); border-color: var(--accent); }
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.6);
+}
+.social a:hover { color: var(--accent); }
+
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.4);
+  padding: 32px 40px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 820px) {
+  .head-inner { grid-template-columns: 1fr; text-align: center; gap: 12px; }
+  .head-l, .head-r { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .container { padding: 0 24px; }
+  .masthead { padding: 24px; }
+  .lead-grid { grid-template-columns: 1fr; gap: 24px; }
+  .chap { grid-template-columns: 1fr; gap: 16px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .skill-row { grid-template-columns: 50px 1fr; gap: 12px; }
+  .skill-row .desc, .skill-row .level { grid-column: 1 / -1; text-align: left; }
+  .works-grid { grid-template-columns: 1fr; gap: 40px; }
+  section { padding: 60px 0; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <div class="head-l">Vol. 01 — 2026</div>
+    <div class="head-c">Inoue Hinata</div>
+    <div class="head-r">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#works">Works</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="masthead-top">
+    <span>The Portfolio</span>
+    <span class="line-h"></span>
+    <span>Frontend Engineer</span>
+    <span class="line-h"></span>
+    <span>Established 2026</span>
+  </div>
+  <h1 class="title">Inoue <span class="ital">Hinata</span></h1>
+  <div class="subtitle">— Client-side / Frontend Engineer —</div>
+</div>
+
+<section class="lead-section">
+  <div class="container">
+    <div class="lead-grid">
+      <div class="meta">
+        <strong>Issue</strong>
+        Portfolio 2026
+        <br><br>
+        <strong>Section</strong>
+        Introduction
+      </div>
+      <div class="lead-text">
+        <span class="drop">こ</span>んにちは、井上陽向汰です。<span class="ital">クライアントサイドを軸に</span>、Webアプリケーションを設計・開発しています。技術の正しさと、人の心地よさ、両方を諦めないものづくりが信条です。
+      </div>
+      <div class="meta">
+        <strong>Status</strong>
+        2028卒 / 就活中
+        <br><br>
+        <strong>Location</strong>
+        Tokyo, Japan
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="chap">
+      <div class="chap-no">Chapter 01 / About</div>
+      <div>
+        <h2 class="chap-title">An <span class="ital">Introduction</span></h2>
+        <div class="chap-sub">— Who I am, briefly</div>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-col">
+        <p><strong>はじめまして、井上陽向汰（いのうえ ひなた）と申します。</strong>○○大学大学院 情報工学専攻の修士1年で、2028年3月に修了を予定しています。</p>
+        <p>中学生のころ初めて自分のHTMLサイトを公開した瞬間、ものづくりの面白さに憑かれました。それ以来、コードを書くことが私にとっての表現方法であり続けています。</p>
+        <p>現在はReactとTypeScriptを軸にしたクライアントサイドの開発を主戦場としつつ、デザインやインフラにも興味を広げています。<strong>「正しい技術」だけでなく「人にとって心地よい設計」</strong>を、これからも追求していきたいです。</p>
+      </div>
+      <div class="about-col">
+        <div class="about-quote">
+          技術は手段。<br>
+          解くべきは、いつだって<br>
+          人の課題である。
+        </div>
+        <p style="margin-top: 24px; font-size: 13px; color: var(--ink-3); text-align: center;">— my motto</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="chap">
+      <div class="chap-no">Chapter 02 / Skills</div>
+      <div>
+        <h2 class="chap-title">The <span class="ital">Toolkit</span></h2>
+        <div class="chap-sub">— Things I work with</div>
+      </div>
+    </div>
+    <div class="skill-table">
+      <div class="skill-row">
+        <div class="num">— 01</div>
+        <div class="name">React <span class="ital">/ Next.js</span></div>
+        <div class="desc">主戦場。SPA、SSR、ISR、App Router まで一通り。Hooks中心の設計が好み。</div>
+        <div class="level"><strong>Advanced</strong>2年以上</div>
+      </div>
+      <div class="skill-row">
+        <div class="num">— 02</div>
+        <div class="name">TypeScript</div>
+        <div class="desc">型を味方につけた開発体験を大切にしています。Generics、Utility Types を積極活用。</div>
+        <div class="level"><strong>Advanced</strong>2年以上</div>
+      </div>
+      <div class="skill-row">
+        <div class="num">— 03</div>
+        <div class="name">UI <span class="ital">/ UX Design</span></div>
+        <div class="desc">FigmaでのUIデザインも好きで、実装者目線の設計を意識しています。</div>
+        <div class="level"><strong>Intermediate</strong>独学中</div>
+      </div>
+      <div class="skill-row">
+        <div class="num">— 04</div>
+        <div class="name">Backend</div>
+        <div class="desc">Node.js / Python (FastAPI)。簡易なAPI設計とDB設計の経験あり。</div>
+        <div class="level"><strong>Intermediate</strong>個人開発</div>
+      </div>
+      <div class="skill-row">
+        <div class="num">— 05</div>
+        <div class="name">Infra <span class="ital">/ DevOps</span></div>
+        <div class="desc">Vercel、Firebaseでの個人開発デプロイ経験。AWS / Dockerは学習中。</div>
+        <div class="level"><strong>Learning</strong>勉強中</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="container">
+    <div class="chap">
+      <div class="chap-no">Chapter 03 / Works</div>
+      <div>
+        <h2 class="chap-title">Selected <span class="ital">Works</span></h2>
+        <div class="chap-sub">— Personal projects</div>
+      </div>
+    </div>
+    <div class="works-grid">
+      <article class="work-item">
+        <div class="work-no"><span>— 01</span><span>2026</span></div>
+        <div class="vis v1">文</div>
+        <h3>Character Counter <span class="ital">— 文字カウント拡張</span></h3>
+        <p class="desc">ブラウザ上で選択したテキストの文字数を、その場で表示するChrome拡張機能。<code style="font-family:var(--font-mono);font-size:12px;">selectionchange</code> を主トリガーにすることで、マウス選択だけでなくキーボード操作（Shift+矢印 / Ctrl+A）にも反応。iframe 内のフォームでも動くよう Manifest V3 の <code style="font-family:var(--font-mono);font-size:12px;">all_frames</code> と <code style="font-family:var(--font-mono);font-size:12px;">match_origin_as_fallback</code> を設定。空白を除いた純粋な文字数を返すロジックを content / popup で統一実装。</p>
+        <div class="tags"><span>Chrome Extension</span><span>Manifest V3</span><span>JavaScript</span><span>HTML / CSS</span></div>
+        <div class="work-links">
+          <a href="https://github.com/magu0914/character-counter" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+      <article class="work-item">
+        <div class="work-no"><span>— 02</span><span>2026</span></div>
+        <div class="vis v2">PT</div>
+        <h3>Photo <span class="ital">Tagger</span></h3>
+        <p class="desc">Google フォトに独自タグを後付けし、撮りためた数千枚から目的の写真にたどり着けるようにするツール。PCはChrome拡張、スマホはPWAという役割分担で、タグデータはユーザーのGoogle Drive (<code style="font-family:var(--font-mono);font-size:12px;">appDataFolder</code>) に保存することでサーバーレスを実現。Trusted Types CSP下でのDOM構築や、クロスオリジン画像取得の制約をサムネイルbase64化で回避するなど、実環境ならではの技術課題に取り組んだ。</p>
+        <div class="tags"><span>Chrome Extension</span><span>PWA</span><span>Manifest V3</span><span>OAuth 2.0</span><span>Google Drive API</span></div>
+        <div class="work-links">
+          <a href="https://github.com/magu0914/photo-tagger" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+      <article class="work-item">
+        <div class="work-no"><span>— 03</span><span>2026</span></div>
+  
