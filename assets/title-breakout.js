@@ -8,6 +8,32 @@
   if (!mast || !title || !btn) return;
   btn.hidden = false;
 
+  /* ---------- クリアタイムの記録 ---------- */
+  var BEST_KEY = 'title-best-v1';
+  var bestEl = document.querySelector('[data-title-best]');
+  function readBest() {
+    try { return parseFloat(localStorage.getItem(BEST_KEY)) || 0; } catch (e) { return 0; }
+  }
+  function fmt(sec) {
+    var m = Math.floor(sec / 60), s = sec - m * 60;
+    return m + ':' + (s < 10 ? '0' : '') + s.toFixed(1);
+  }
+  function showBest() {
+    var b = readBest();
+    if (!bestEl || !b) return;
+    bestEl.textContent = 'BEST ' + fmt(b);
+    bestEl.hidden = false;
+  }
+  showBest();
+
+  /* デバッグ表示（debug.js）から覗けるように、遊んでいる間の状態だけを渡す */
+  window.TitleBreakout = {
+    stats: function () {
+      if (!game) return null;
+      return { left: game.left, total: game.total, balls: game.balls.length, items: game.items.length, time: game.startT === null ? 0 : game.t - game.startT, spurt: !!game.spurt };
+    }
+  };
+
   var game = null;
   btn.addEventListener('click', function () {
     if (game) game.stop();
@@ -111,6 +137,7 @@
     this.miss = 0;
     this.W = W; this.H = H;
     this.t = 0;
+    this.startT = null;
     this.items = [];
     this.pops = [];
     this.fx = { wide: 0, pierce: 0, slow: 0, bomb: 0 };
@@ -182,6 +209,7 @@
   TitleGame.prototype.launch = function () {
     var b = this.balls[0];
     if (!b || !b.stuck || this.cleared) return;
+    if (this.startT === null) this.startT = this.t;
     /* 発射は3球を扇状に。1球だと序盤がなかなか進まないので */
     var base = (-Math.PI / 2) + (Math.random() - 0.5) * 0.4;
     var s = this.curSpeed();
@@ -377,10 +405,18 @@
   TitleGame.prototype.clear = function () {
     var self = this;
     this.cleared = true;
+    this.clearTime = this.t - (this.startT || 0);
+    var best = readBest();
+    this.newRecord = !best || this.clearTime < best;
+    this.prevBest = best;
+    if (this.newRecord) {
+      try { localStorage.setItem(BEST_KEY, String(this.clearTime)); } catch (e) {}
+      showBest();
+    }
     this.items = [];
     this.balls.forEach(function (b) { b.vx = 0; b.vy = 0; b.stuck = true; });
     document.dispatchEvent(new CustomEvent('site:title-clear'));
-    setTimeout(function () { if (self.canvas) self.stop(); }, 2400);
+    setTimeout(function () { if (self.canvas) self.stop(); }, 3600);
   };
 
   function capsule(ctx, x, y, def) {
@@ -446,7 +482,8 @@
     ctx.globalAlpha = 1;
 
     /* HUD: 効果は名前と残り秒数の文字で出す（色だけにしない） */
-    var hud = 'SCORE ' + this.score + '  MISS ' + this.miss + '  LEFT ' + this.left;
+    var elapsed = this.cleared ? this.clearTime : (this.startT === null ? 0 : this.t - this.startT);
+    var hud = 'TIME ' + fmt(elapsed) + '  SCORE ' + this.score + '  MISS ' + this.miss + '  LEFT ' + this.left;
     var active = [];
     if (this.fx.wide > 0) active.push('WIDE ' + Math.ceil(this.fx.wide) + 's');
     if (this.fx.pierce > 0) active.push('PIERCE ' + Math.ceil(this.fx.pierce) + 's');
@@ -465,8 +502,16 @@
     if ((first && first.stuck) || this.cleared) {
       ctx.textAlign = 'center';
       ctx.textBaseline = 'bottom';
-      ctx.font = this.cleared ? 'italic 32px "Playfair Display", serif' : '12px "JetBrains Mono", ui-monospace, monospace';
-      ctx.fillText(this.cleared ? 'Thanks for playing.' : 'クリック / Space で発射 ・ Esc で終了', this.W / 2, p.y - 18);
+      if (this.cleared) {
+        ctx.font = '20px "Press Start 2P", ui-monospace, monospace';
+        ctx.fillText('CLEAR ' + fmt(this.clearTime), this.W / 2, p.y - 44);
+        ctx.font = 'bold 14px "JetBrains Mono", ui-monospace, monospace';
+        ctx.fillStyle = this.newRecord ? ITEMS.PIERCE.color : ink;
+        ctx.fillText(this.newRecord ? 'NEW RECORD!' : 'BEST ' + fmt(this.prevBest), this.W / 2, p.y - 18);
+      } else {
+        ctx.font = '12px "JetBrains Mono", ui-monospace, monospace';
+        ctx.fillText('クリック / Space で発射 ・ Esc で終了', this.W / 2, p.y - 18);
+      }
     }
   };
 

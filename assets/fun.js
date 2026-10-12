@@ -14,6 +14,8 @@
     { id: 'read-all', title: '全巻読破', desc: '制作記事を4本すべて読んだ', hint: '作品の Story を全部' },
     { id: 'highscore', title: 'ハイスコア保持者', desc: 'Breakout で遊んだことがある', hint: 'Breakout を遊ぶ' },
     { id: 'konami', title: '↑↑↓↓←→←→BA', desc: '8bitモードを見つけた', hint: '昔ながらのあのコマンド' },
+    { id: 'debug', title: 'デバッグモード', desc: 'F3 でデバッグ表示を開いた', hint: 'ゲームでおなじみのファンクションキー' },
+    { id: 'print', title: '攻略本', desc: '印刷用レジュメ（攻略本モード）を開いた', hint: '連絡先の画面' },
     { id: 'console', title: '裏口から失礼します', desc: '開発者ツールで hello() を実行した', hint: '開発者ツールのコンソール' },
     { id: 'lost', title: '迷子', desc: '存在しないページにたどり着いた', hint: 'ないページを開く' },
     { id: 'bottom', title: 'エンドロールまで', desc: 'ページの一番下まで読んだ', hint: '最後までスクロール' }
@@ -176,10 +178,17 @@
       io.observe(end);
     }
 
+    /* 攻略本モード（印刷用レジュメ） */
+    window.addEventListener('beforeprint', function () { unlock('print'); });
+    var printers = document.querySelectorAll('[data-print]');
+    for (var i = 0; i < printers.length; i++) {
+      printers[i].addEventListener('click', function () { unlock('print'); window.print(); });
+    }
+
     setTimeout(function () { unlock('welcome'); }, 1200);
   }
 
-  window.Ach = { unlock: unlock, list: ACHIEVEMENTS };
+  window.Ach = { unlock: unlock, list: ACHIEVEMENTS, count: function () { return unlocked.length; } };
 
   function init() { render(); listen(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

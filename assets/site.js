@@ -155,7 +155,7 @@
   function greet() {
     if (!window.console || !console.log) return;
     console.log(
-      '%cInoue Hinata%c\nここまで覗いてくださってありがとうございます。\nこのサイトのソース: https://github.com/magu0914/magu0914.github.io\nためしに hello() と打ってみてください。',
+      '%cInoue Hinata%c\nここまで覗いてくださってありがとうございます。\nこのサイトのソース: https://github.com/magu0914/magu0914.github.io\nためしに hello() と打ってみてください。F3 でデバッグ表示も出ます。',
       'font: italic 28px "Playfair Display", serif; color: #4a6a8c;',
       'font: 12px monospace; color: #555;'
     );

@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261013e">
+<link rel="stylesheet" href="assets/style.css?v=20261013i">
 </head>
 <body>
 <a class="skip" href="#about">本文へスキップ</a>
@@ -32,6 +32,7 @@
 </header>
 
 <main>
+<p class="print-only print-head">井上陽向汰 ポートフォリオ（印刷用レジュメ）— https://magu0914.github.io/ ・ hinatainoue0914@gmail.com ・ github.com/magu0914</p>
 <!-- ===== TITLE SCREEN ===== -->
 <div class="title-screen" id="top">
   <div class="masthead">
@@ -40,6 +41,7 @@
     <p class="subtitle">Client-side Engineer · Games &amp; Web</p>
     <p class="press"><a href="#about" class="press-start"><span class="blink" aria-hidden="true">▶ </span>PRESS START</a></p>
     <button type="button" id="title-play" class="title-play" aria-pressed="false" hidden>▶ Play the title</button>
+    <p class="title-best" data-title-best hidden></p>
     <p class="ts-copy">© 2026 INOUE HINATA · MADE IN NAGASAKI</p>
   </div>
 </div>
@@ -293,6 +295,7 @@
       <ul class="choices">
         <li><a href="mailto:hinatainoue0914@gmail.com" class="choice"><span class="choice-k">YES</span><span class="choice-v">パーティに誘う（メール）<span class="mail">hinatainoue0914@gmail.com</span></span></a></li>
         <li><a href="https://github.com/magu0914" target="_blank" rel="noopener" class="choice"><span class="choice-k">INFO</span><span class="choice-v">装備を確認する（GitHub）<span class="mail">github.com/magu0914</span></span></a></li>
+        <li class="no-print"><button type="button" class="choice" data-print><span class="choice-k">BOOK</span><span class="choice-v">攻略本を印刷する<span class="mail">仕掛けを外した印刷用レジュメ（PDF 保存にも）</span></span></button></li>
       </ul>
     </div>
   </div>
@@ -312,6 +315,61 @@
         <p class="ach-hint">このサイトの中に実績が隠れています。進み具合はこのブラウザにだけ保存されます。</p>
       </div>
       <ul class="ach-list" data-ach-list></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATCH NOTES ===== -->
+<section id="patch" class="screen" aria-labelledby="patch-h">
+  <div class="wrap">
+    <div class="screen-head">
+      <p class="screen-no">SCREEN 07</p>
+      <h2 class="screen-title" id="patch-h">PATCH NOTES<span class="screen-ja">更新履歴</span></h2>
+    </div>
+    <div class="win patch">
+      <article class="patch-ver">
+        <h3><span class="ver">Ver 2.1.0</span> <time datetime="2026-10-13">2026.10.13</time></h3>
+        <ul>
+          <li><span class="tag add">追加</span>タイトルのブロック崩しにクリアタイムとベスト記録を追加</li>
+          <li><span class="tag add">追加</span>F3 でデバッグ表示（FPS・DOM 数・読み込み時間など）</li>
+          <li><span class="tag add">追加</span>攻略本モード（印刷すると仕掛けを外したレジュメになる）</li>
+          <li><span class="tag add">追加</span>このパッチノート</li>
+          <li><span class="tag adj">調整</span>タイトルのブロック崩しを崩しやすく（ブロック数を約1/3、3球発射、LAST SPURT、残り30個で狙い撃ち）</li>
+        </ul>
+      </article>
+      <details class="patch-old">
+        <summary>以前の更新を見る</summary>
+        <article class="patch-ver">
+          <h3><span class="ver">Ver 2.0.0</span> <time datetime="2026-10-13">2026.10.13</time></h3>
+          <ul>
+            <li><span class="tag add">追加</span>デザインを「タイトル画面とステージセレクト」に一新</li>
+            <li><span class="tag add">追加</span>タイトルのブロック崩しにアイテム5種（WIDE / MULTI / PIERCE / SLOW / BOMB）</li>
+            <li><span class="tag add">追加</span>実績、8bit モード、スタッフロール、スキルのステータス表示</li>
+            <li><span class="tag add">追加</span>開発中の作品に Wizard Trial</li>
+          </ul>
+        </article>
+        <article class="patch-ver">
+          <h3><span class="ver">Ver 1.2.0</span> <time datetime="2026-10-12">2026.10.12</time></h3>
+          <ul>
+            <li><span class="tag add">追加</span>見え方の切り替え（通常 / P型 / D型 / 補正）と比較スライダー</li>
+            <li><span class="tag add">追加</span>タイトル文字のブロック崩し、作品ごとの制作記事、GAME OVER の 404</li>
+          </ul>
+        </article>
+        <article class="patch-ver">
+          <h3><span class="ver">Ver 1.1.0</span> <time datetime="2026-10-12">2026.10.12</time></h3>
+          <ul>
+            <li><span class="tag fix">修正</span>小さい文字のコントラストを WCAG AA 以上に</li>
+            <li><span class="tag fix">修正</span>Breakout のステージ名の誤り（Stage 4 は CORRIDORS）</li>
+            <li><span class="tag adj">調整</span>スキル欄の書き方、作品の並び順、動きを減らす設定への対応</li>
+          </ul>
+        </article>
+        <article class="patch-ver">
+          <h3><span class="ver">Ver 1.0.0</span> <time datetime="2026-05">2026.05</time></h3>
+          <ul>
+            <li><span class="tag add">追加</span>初版公開</li>
+          </ul>
+        </article>
+      </details>
     </div>
   </div>
 </section>
@@ -335,8 +393,9 @@
   </div>
 </footer>
 
-<script src="assets/site.js?v=20261013e" defer></script>
-<script src="assets/fun.js?v=20261013e" defer></script>
-<script src="assets/title-breakout.js?v=20261013e" defer></script>
+<script src="assets/site.js?v=20261013i" defer></script>
+<script src="assets/fun.js?v=20261013i" defer></script>
+<script src="assets/title-breakout.js?v=20261013i" defer></script>
+<script src="assets/debug.js?v=20261013i" defer></script>
 </body>
 </html>

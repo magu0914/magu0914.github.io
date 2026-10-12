@@ -345,3 +345,94 @@ html.mode-8bit .sprite,html.mode-8bit .shots img{image-rendering:pixelated}
 html.mode-8bit .credits{background:#000}
 html.mode-8bit code{background:#000}
 html.mode-8bit body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:300;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px)}
+
+/* ===== タイトルのベスト記録 ===== */
+.title-best{margin-top:10px;font-family:var(--font-pixel);font-size:12px;color:var(--accent-ink);letter-spacing:.06em;line-height:1.6}
+.masthead.playing .title-best{visibility:hidden}
+
+/* ===== 連絡先: ボタン版の選択肢（攻略本） ===== */
+button.choice{width:100%;font:inherit;color:inherit;background:transparent;text-align:left;cursor:pointer}
+
+/* ===== パッチノート ===== */
+.patch{padding:24px 28px}
+.patch-ver + .patch-ver,.patch-old{margin-top:22px}
+.patch-ver h3{font-size:16px;font-weight:700;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;margin-bottom:10px}
+.patch-ver .ver{font-family:var(--font-pixel);font-size:14px;color:var(--accent-ink);font-weight:400}
+.patch-ver time{font-size:14px;color:var(--ink-3);font-weight:400}
+.patch-ver li{display:flex;gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line);font-size:15px;color:var(--ink-2);line-height:1.7}
+.tag{flex:none;font-size:12px;font-weight:700;border:2px solid currentColor;border-radius:3px;padding:0 6px;line-height:1.6}
+.tag.add{color:var(--green)}
+.tag.adj{color:var(--accent)}
+.tag.fix{color:var(--pink)}
+.patch-old summary{cursor:pointer;font-family:var(--font-pixel);font-size:12px;color:var(--ink);padding:8px 0;line-height:1.8}
+.patch-old summary::marker{color:var(--accent-ink)}
+.patch-old[open] summary{margin-bottom:12px}
+
+/* ===== デバッグ表示（F3） ===== */
+.debug-panel{position:fixed;left:12px;bottom:12px;z-index:120;max-width:calc(100vw - 24px);background:rgba(0,0,0,.88);color:#E6EDF3;border:2px solid #4ECDC4;border-radius:4px;padding:10px 12px;font:12px/1.5 ui-monospace,"Cascadia Code",Consolas,monospace}
+.debug-panel[hidden]{display:none}
+.debug-h{color:#4ECDC4;font-weight:700;margin-bottom:6px}
+.debug-panel table{border-collapse:collapse}
+.debug-panel th{text-align:left;font-weight:400;color:#A3AEBC;padding:1px 12px 1px 0;white-space:nowrap;vertical-align:top}
+.debug-panel td{color:#E6EDF3;padding:1px 0;font-variant-numeric:tabular-nums}
+.debug-btn{margin:8px 8px 0 0;font:inherit;color:#E6EDF3;background:transparent;border:1px solid #A3AEBC;border-radius:3px;padding:2px 8px;cursor:pointer}
+.debug-btn[aria-pressed=true]{background:#4ECDC4;color:#0E1116;border-color:#4ECDC4}
+html.debug-boxes body *:not(.debug-panel):not(.debug-panel *){outline:1px solid rgba(255,122,182,.55);outline-offset:-1px}
+
+/* ===== 攻略本モード（印刷用レジュメ） ===== */
+.print-only{display:none}
+@media print{
+  @page{margin:14mm 14mm}
+  html,body{background:#fff !important}
+  *,*::before,*::after{color:#111 !important;background:transparent !important;box-shadow:none !important;text-shadow:none !important;animation:none !important;transition:none !important;filter:none !important}
+  body{font-family:"M PLUS 1p","Hiragino Sans","Noto Sans JP",sans-serif;font-size:10.5pt;line-height:1.6}
+  .print-only{display:block}
+  .print-head{font-size:9pt;border-bottom:1px solid #999;padding-bottom:4mm;margin-bottom:4mm}
+  header.top,.skip,.title-play,.title-best,.press,.ts-pre,.ts-copy,.opening .msg-next,.cvd-defs,[data-cvd-compare],
+  #achievements,#patch,.credits,.ach-toasts,.debug-panel,.no-print,.stage-vis,.hs-note,.unlock,.title-game,
+  .title-screen::before,.title-screen::after,.blink{display:none !important}
+  .title-screen{padding:0;border:0}
+  .masthead{min-height:0;padding:0 0 4mm;border:0;align-items:flex-start;text-align:left}
+  .masthead h1.title{font-size:20pt;line-height:1.2}
+  .masthead h1.title .ital{display:inline}
+  .subtitle{margin-top:2mm}
+  .wrap{max-width:none;padding:0}
+  .screen{padding:4mm 0;border-top:1px solid #999;scroll-margin:0}
+  .screen-head{margin-bottom:3mm}
+  .screen-no{display:none}
+  .screen-title{font-size:13pt}
+  .screen-ja{display:inline;margin:0 0 0 3mm;font-size:10pt}
+  .win,.stage,.status,.continue-box,.msg-window{border:1px solid #bbb !important;border-radius:0;padding:3mm;break-inside:avoid}
+  .chara,.lore,.stages,.wiz-grid{display:block}
+  .chara > * + *,.lore > * + *,.stages > * + *{margin-top:3mm}
+  .sprite,.motto{display:none}
+  .stage-desc,.stage-line{font-size:10pt}
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm}
+  .shots img{max-height:32mm;width:auto}
+  .chips{display:flex;flex-wrap:wrap;gap:1mm 3mm;font-size:9pt}
+  a{text-decoration:none}
+  .stage-links a[href^="http"]::after,.choice[href^="http"] .mail::after{content:" (" attr(href) ")";font-size:8.5pt}
+  .stage-links{display:block;margin-top:1mm;font-size:8.5pt;line-height:1.5}
+  .stage-links a{display:inline;margin:0 4mm 0 0;padding:0;border:0;min-height:0;font-family:inherit;font-size:inherit;letter-spacing:0}
+  .stage-links a::before{display:none}
+  .stage-name{font-size:11pt;line-height:1.4}
+  .choices{display:block}
+  .choice{padding:1mm 0;border:0}
+  .choice::before{display:none}
+  .continue .screen-title{font-size:13pt}
+  .continue-q{text-align:left;font-size:10.5pt}
+  .gauge,.bar,.stat .gauge{border:1px solid #999 !important}
+  /* 枚数を抑える: 重複するあいさつ・スクショは省き、作品とスキルは2段組み */
+  .opening,.shots{display:none !important}
+  .stages{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+  .stages > * + *{margin-top:0}
+  .stages-locked .stage-wide{grid-column:1/-1}
+  .wiz-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+  .prof{grid-template-columns:1fr 1fr;column-gap:6mm}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:2mm 6mm}
+  .stat{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name lv" "gauge gauge" "desc desc";padding-left:0}
+  .screen{padding:3mm 0}
+  body{font-size:9.5pt;line-height:1.5}
+  .win-text p:not(.win-label){margin-bottom:2mm;line-height:1.6}
+  .stage-desc,.stage-line{font-size:9pt}
+}

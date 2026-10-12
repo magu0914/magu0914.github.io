@@ -79,3 +79,17 @@
   .pager{grid-template-columns:1fr}
   .pager .next{text-align:left}
 }
+
+/* 攻略本モード（印刷） */
+@media print{
+  .f-head{padding:0 0 4mm;background:none !important;border-bottom:1px solid #999}
+  .f-head h1{font-size:18pt}
+  .facts{grid-template-columns:repeat(3,1fr)}
+  .facts div,.f-body{border:1px solid #bbb !important;padding:3mm}
+  .f-sec{display:block;padding-top:4mm}
+  .f-no{border:0;padding:0;margin-bottom:1mm}
+  .f-body{break-inside:auto}
+  .pager,.f-foot{display:none !important}
+  .fix{break-inside:avoid}
+  .bar .fill{background:#555 !important}
+}
