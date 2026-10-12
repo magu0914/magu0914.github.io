@@ -19,10 +19,32 @@
 
 ## 🛠 技術
 
-- **HTML / CSS** のみで実装、JavaScript 不使用
-- 外部依存は Google Fonts（Playfair Display / Inter / JetBrains Mono / Noto Serif JP）の CDN 読み込みのみ
-- 単一の `index.html` で完結
+- **HTML / CSS / Vanilla JS**、ビルドなし・フレームワークなし
+- 外部依存は Google Fonts のみ
 - GitHub Pages でホスティング
+
+## ✨ 仕掛け
+
+| | |
+|---|---|
+| 見え方の切り替え | ヘッダーで「通常 / P型 / D型 / 補正」を切り替えると、サイト全体に修士研究と同じ色変換（Machado 2009 / Daltonize）が SVG `feColorMatrix` でかかる。`color-interpolation-filters="linearRGB"` を明示して線形RGBで計算 |
+| 見え方比較スライダー | 自作 Breakout の配色を P型シミュレーションと並べて比較 |
+| Play the title | タイトル文字をサンプリングしてブロックにし、その場でブロック崩しができる。ボタンを押したときだけ動く |
+| ハイスコア | Breakout を遊んだことがあるブラウザでは、作品カードにハイスコアが出る（同一オリジンの localStorage） |
+| 404 | GAME OVER / CONTINUE? |
+
+アクセシビリティ: 小さい文字は WCAG AA（4.5:1）以上、`prefers-reduced-motion` 対応、キーボードだけで全操作可能、状態は色だけで示さない。
+
+## 📁 構成
+
+```
+index.html            トップページ
+works/*.html          作品ごとの制作記事（きっかけ・流れ・工夫・嫌だったこと→直したこと）
+works/feature.css
+assets/site.js        見え方切り替え / 比較スライダー / ハイスコア表示
+assets/title-breakout.js
+404.html
+```
 
 ## 📂 掲載作品
 

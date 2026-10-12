@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Over — Inoue Hinata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E1116;--ink:#E6EDF3;--dim:#9aa4b0;--accent:#8fb0d4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",monospace;text-align:center;padding:24px}
+.code{font-size:12px;letter-spacing:0.3em;color:var(--dim);margin-bottom:18px}
+h1{font-family:"Playfair Display","Noto Serif JP",serif;font-weight:400;font-style:italic;font-size:clamp(56px,12vw,120px);line-height:1;letter-spacing:-0.02em}
+.msg{margin:22px 0 40px;font-size:14px;color:var(--dim);line-height:1.9}
+.continue{font-size:14px;letter-spacing:0.25em}
+.count{display:block;font-family:"Playfair Display",serif;font-size:56px;letter-spacing:0;margin:8px 0 20px;color:var(--accent)}
+.choices{display:flex;gap:28px;justify-content:center;font-size:16px;letter-spacing:0.15em}
+.choices a,.choices button{font:inherit;letter-spacing:inherit;color:var(--ink);background:none;border:none;border-bottom:1px solid transparent;padding:4px 2px;cursor:pointer}
+.choices a::before{content:"▶ ";content:"▶ " / "";color:var(--accent)}
+.choices a:hover,.choices button:hover{border-bottom-color:currentColor}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.reply{min-height:1.8em;margin-top:22px;font-size:13px;color:var(--dim)}
+</style>
+</head>
+<body>
+<main>
+<p class="code">ERROR 404 — PAGE NOT FOUND</p>
+<h1>Game Over</h1>
+<p class="msg">お探しのページは、ボールと一緒に画面の外へ落ちてしまったようです。</p>
+<p class="continue">CONTINUE?<span class="count" id="count" aria-hidden="true">9</span></p>
+<div class="choices"><a href="/" id="yes">YES</a><button type="button" id="no">NO</button></div>
+<p class="reply" id="reply" aria-live="polite"></p>
+</main>
+<script>
+(function () {
+  var count = document.getElementById('count');
+  var reply = document.getElementById('reply');
+  var lines = ['そう言わずに。', '作品だけでも見ていきませんか。', 'ブロック崩しもあります。', 'YES のほうへどうぞ。'];
+  var n = 0;
+  document.getElementById('no').addEventListener('click', function () {
+    reply.textContent = lines[Math.min(n++, lines.length - 1)];
+    if (n >= lines.length) document.getElementById('yes').focus();
+  });
+  /* 動きを減らす設定のときはカウントダウンしない */
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var t = 9;
+  var timer = setInterval(function () {
+    t--;
+    count.textContent = String(Math.max(t, 0));
+    if (t <= 0) {
+      clearInterval(timer);
+      count.textContent = '0';
+      reply.textContent = '…でもトップページはいつでも開けます。';
+    }
+  }, 1000);
+})();
+</script>
+</body>
+</html>
