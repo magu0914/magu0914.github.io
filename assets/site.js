@@ -83,7 +83,10 @@
       else document.documentElement.setAttribute('data-cvd', mode.id);
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.mode === mode.id)); });
       note.textContent = mode.note;
-      if (persist) saveMode(mode.id);
+      if (persist) {
+        saveMode(mode.id);
+        document.dispatchEvent(new CustomEvent('site:cvd', { detail: mode.id }));
+      }
     }
     apply(readMode(), false);
   }
@@ -152,7 +155,7 @@
   function greet() {
     if (!window.console || !console.log) return;
     console.log(
-      '%cInoue Hinata%c\nここまで覗いてくださってありがとうございます。\nこのサイトのソース: https://github.com/magu0914/magu0914.github.io\nタイトル下の「▶ Play the title」も押してみてください。',
+      '%cInoue Hinata%c\nここまで覗いてくださってありがとうございます。\nこのサイトのソース: https://github.com/magu0914/magu0914.github.io\nためしに hello() と打ってみてください。',
       'font: italic 28px "Playfair Display", serif; color: #4a6a8c;',
       'font: 12px monospace; color: #555;'
     );

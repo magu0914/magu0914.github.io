@@ -29,7 +29,9 @@
 |---|---|
 | 見え方の切り替え | ヘッダーで「通常 / P型 / D型 / 補正」を切り替えると、サイト全体に修士研究と同じ色変換（Machado 2009 / Daltonize）が SVG `feColorMatrix` でかかる。`color-interpolation-filters="linearRGB"` を明示して線形RGBで計算 |
 | 見え方比較スライダー | 自作 Breakout の配色を P型シミュレーションと並べて比較 |
-| Play the title | タイトル文字をサンプリングしてブロックにし、その場でブロック崩しができる。ボタンを押したときだけ動く |
+| Play the title | タイトル文字をサンプリングしてブロックにし、その場でブロック崩しができる。本編と同じ重み付き抽選でアイテム（WIDE / MULTI / PIERCE / SLOW / BOMB）が落ちる。ボタンを押したときだけ動く |
+| 実績 | 13個。見え方を切り替える、タイトルを崩しきる、制作記事を全部読む…などで解除（localStorage） |
+| 8bit モード | ↑↑↓↓←→←→BA |
 | ハイスコア | Breakout を遊んだことがあるブラウザでは、作品カードにハイスコアが出る（同一オリジンの localStorage） |
 | 404 | GAME OVER / CONTINUE? |
 
@@ -41,7 +43,9 @@
 index.html            トップページ
 works/*.html          作品ごとの制作記事（きっかけ・流れ・工夫・嫌だったこと→直したこと）
 works/feature.css
+assets/style.css      デザイン（タイトル画面とステージセレクト）
 assets/site.js        見え方切り替え / 比較スライダー / ハイスコア表示
+assets/fun.js         実績 / 8bit モード
 assets/title-breakout.js
 404.html
 ```

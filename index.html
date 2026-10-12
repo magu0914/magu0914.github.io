@@ -9,172 +9,334 @@
 <meta property="og:title" content="Inoue Hinata — Portfolio">
 <meta property="og:description" content="Webゲーム・ブラウザ拡張・Botなどの制作物と、色覚特性者向けリアルタイム色補正の研究。">
 <meta property="og:url" content="https://magu0914.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23fafaf7%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%236b8caf%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%234a6a8c%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%232a2a2a%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%230E1116%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%23FF7AB6%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%239D8DFF%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%234ECDC4%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%23FFD93D%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%23E6EDF3%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#fafaf7;--bg-2:#f0ecdf;--ink:#2a2a2a;--ink-2:#555;--ink-3:#6b6b62;--accent:#6b8caf;--accent-ink:#4a6a8c;--font-display:"Playfair Display","Noto Serif JP",serif;--font-body:"Inter","Noto Serif JP",sans-serif;--font-mono:"JetBrains Mono",monospace}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-.container{max-width:1200px;margin:0 auto;padding:0 40px}
-.ital{font-style:italic}
-::selection{background:var(--accent);color:var(--bg)}
-header{border-bottom:1px solid var(--ink);background:var(--bg);position:sticky;top:0;z-index:50}
-.head-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 40px;gap:24px}
-.head-l{font-size:11px;text-transform:uppercase;letter-spacing:0.15em}
-.head-c{font-family:var(--font-display);font-size:22px;font-style:italic;text-align:center;font-weight:400}
-.head-r{display:flex;gap:24px;justify-content:flex-end;font-size:11px;text-transform:uppercase;letter-spacing:0.15em}
-.head-r a{transition:color 0.2s}
-.head-r a:hover{color:var(--accent-ink)}
-.masthead{border-bottom:1px solid var(--ink);padding:40px;text-align:center}
-.masthead-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-3);margin-bottom:24px}
-.masthead-top .line-h{flex:1;height:1px;background:var(--ink-3);margin:0 20px}
-.masthead h1.title{font-family:var(--font-display);font-size:clamp(68px,12vw,152px);font-weight:400;letter-spacing:-0.04em;line-height:0.9}
-.masthead h1 .ital{font-style:italic;color:var(--accent)}
-.masthead .subtitle{margin-top:20px;font-size:13px;text-transform:uppercase;letter-spacing:0.3em;color:var(--ink-2)}
-.lead-section{padding:80px 0;border-bottom:1px solid var(--ink)}
-.lead-grid{display:grid;grid-template-columns:200px 1fr 200px;gap:40px;align-items:start}
-.meta{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--ink-2)}
-.meta strong{display:block;color:var(--ink-3);margin-bottom:4px;font-weight:400}
-.lead-text{font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);line-height:1.6;font-weight:400}
-.drop{float:left;font-family:var(--font-display);font-size:76px;line-height:0.85;padding:6px 12px 0 0;color:var(--accent)}
-section{padding:80px 0;border-bottom:1px solid var(--ink)}
-.chap{display:grid;grid-template-columns:200px 1fr;gap:80px;align-items:start;margin-bottom:60px}
-.chap-no{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-3);border-top:1px solid var(--ink);padding-top:12px}
-.chap-title{font-family:var(--font-display);font-size:clamp(40px,5vw,60px);font-weight:400;letter-spacing:-0.02em;line-height:1;margin-bottom:8px}
-.chap-title .ital{font-style:italic;color:var(--accent)}
-#skills .chap-title .ital{color:var(--accent-ink)}
-.chap-sub{font-size:13px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-3)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.about-col p{font-family:var(--font-body);font-size:16px;color:var(--ink-2);margin-bottom:20px;line-height:1.9}
-.about-col p strong{color:var(--ink);font-weight:500}
-.about-quote{font-family:var(--font-display);font-style:italic;font-size:26px;line-height:1.6;padding:32px;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);text-align:center}
-#skills{background:var(--bg-2)}
-.skill-table{width:100%;border-top:2px solid var(--ink)}
-.skill-row{display:grid;grid-template-columns:80px 1fr 1fr 200px;gap:24px;padding:28px 0;border-bottom:1px solid var(--ink);align-items:center;transition:padding 0.2s}
-.skill-row:hover{padding-left:16px}
-.skill-row .num{font-family:var(--font-mono);font-size:12px;color:var(--ink-3)}
-.skill-row .name{font-family:var(--font-display);font-size:26px;font-weight:400}
-.skill-row .name .ital{font-style:italic}
-.skill-row .desc{font-size:14px;color:var(--ink-2)}
-.skill-row .level{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;text-align:right;letter-spacing:0.1em}
-.skill-row .level strong{display:block;color:var(--accent-ink);font-size:14px;margin-bottom:4px;font-weight:500}
-.works-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px 80px}
-.work-item{border-top:1px solid var(--ink);padding-top:24px}
-.work-item .work-no{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-bottom:12px;display:flex;justify-content:space-between;letter-spacing:0.15em}
-.work-item h3{font-family:var(--font-display);font-size:32px;font-weight:400;letter-spacing:-0.02em;line-height:1.1;margin-bottom:16px}
-.work-item h3 .ital{font-style:italic}
-.work-item .vis{aspect-ratio:3/2;margin-bottom:20px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-style:italic;font-size:56px}
-.work-item .vis.v1{background:linear-gradient(135deg,#f0ecdf 0%,#d8d2c0 100%);color:rgba(0,0,0,0.3)}
-.work-item .vis.v2{background:#2a2a2a;color:rgba(250,250,247,0.35)}
-.work-item .vis.v3{background:var(--accent);color:rgba(255,255,255,0.7)}
-.work-item .vis.v4{background:repeating-linear-gradient(45deg,var(--bg-2),var(--bg-2) 10px,var(--bg) 10px,var(--bg) 20px);color:rgba(0,0,0,0.4)}
-.work-item p.desc{font-size:14px;color:var(--ink-2);margin-bottom:16px;line-height:1.7}
-.work-item .tags{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--font-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
-.work-item .work-links{display:flex;gap:24px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.05em}
-.work-item .work-links a{color:var(--accent-ink);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color 0.2s}
-.work-item .work-links a:hover{border-bottom-color:var(--accent-ink)}
-.work-item .work-links a::after{content:" →";content:" →" / "";display:inline-block;transition:transform 0.2s}
-.work-item .work-links a:hover::after{transform:translateX(4px)}
-#contact{background:var(--ink);color:var(--bg);text-align:center}
-#contact .chap-no{color:rgba(255,255,255,0.5);border-color:rgba(255,255,255,0.3)}
-#contact .chap-title{color:var(--bg)}
-#contact .chap-sub{color:rgba(255,255,255,0.5)}
-.contact-inner{max-width:900px;margin:0 auto}
-.big{font-family:var(--font-display);font-size:clamp(40px,6vw,80px);font-weight:400;letter-spacing:-0.03em;line-height:1.1;margin-bottom:48px}
-.big .ital{font-style:italic;color:var(--accent)}
-.email{font-family:var(--font-display);font-style:italic;font-size:clamp(24px,4vw,40px);display:inline-block;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.4);margin-bottom:64px;transition:color 0.2s}
-.email:hover{color:var(--accent);border-color:var(--accent)}
-.social{display:flex;justify-content:center;gap:40px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.6)}
-.social a:hover{color:var(--accent)}
-footer{background:var(--ink);color:rgba(255,255,255,0.4);padding:32px 40px;border-top:1px solid rgba(255,255,255,0.15);font-family:var(--font-mono);font-size:11px;display:flex;justify-content:space-between;text-transform:uppercase;letter-spacing:0.15em}
-/* 色覚フィルタ */
-.cvd-defs{position:absolute;width:0;height:0;overflow:hidden}
-html[data-cvd=protan] body>:not(.cvd-defs){filter:url(#cvd-protan)}
-html[data-cvd=deutan] body>:not(.cvd-defs){filter:url(#cvd-deutan)}
-html[data-cvd=correct] body>:not(.cvd-defs){filter:url(#cvd-correct)}
-.cvd-toggle{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em}
-.cvd-label{color:var(--ink-3);margin-right:4px;text-transform:uppercase}
-.cvd-toggle button{font:inherit;letter-spacing:inherit;background:transparent;color:var(--ink);border:1px solid var(--ink);padding:3px 8px;cursor:pointer;line-height:1.4}
-.cvd-toggle button:hover{background:var(--bg-2)}
-.cvd-toggle button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
-.cvd-toggle button[aria-pressed=true]::before{content:"✓ ";content:"✓ " / ""}
-.cvd-note{font-family:var(--font-mono);font-size:11px;color:var(--ink-2);margin-top:6px;letter-spacing:0.02em;text-transform:none}
-.cvd-note:empty{display:none}
-/* タイトルのブロック崩し */
-.masthead{position:relative}
-.title-play{margin-top:18px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;background:transparent;color:var(--accent-ink);border:1px solid currentColor;padding:6px 14px;cursor:pointer;position:relative;z-index:2}
-.title-play:hover{background:var(--accent-ink);color:var(--bg)}
-.masthead.playing{padding-top:64px}
-.masthead.playing .title-play{position:absolute;top:8px;right:12px;margin:0;background:var(--bg)}
-.masthead.playing .title-play:hover{background:var(--accent-ink)}
-.title-game{position:absolute;inset:0;z-index:1;touch-action:none;cursor:none}
-.title-game:focus-visible{outline-offset:-4px}
-/* 見え方比較スライダー */
-.cvd-compare{margin-top:28px}
-.cmp{--pos:50%;position:relative;border:1px solid var(--ink);background:#0E1116;overflow:hidden;user-select:none}
-.cmp-layer{padding:28px 24px 20px}
-.cmp-sim{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos));filter:url(#cvd-protan)}
-.cmp-line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fafaf7;pointer-events:none}
-.cmp-tag{position:absolute;top:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:#E6EDF3;background:rgba(14,17,22,0.8);padding:1px 6px;z-index:1}
-.cmp-tag.l{left:8px}.cmp-tag.r{right:8px}
-.bo-board{display:grid;gap:5px;max-width:520px;margin:0 auto}
-.bo-row{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}
-.bo-block{height:18px;border-radius:2px}
-.bo-caps{display:flex;justify-content:center;gap:14px;margin-top:18px}
-.bo-cap{width:30px;height:18px;border-radius:9px;font:600 11px/18px var(--font-mono);text-align:center;color:#0E1116}
-.bo-paddle{display:block;width:90px;height:8px;border-radius:4px;background:#4ECDC4;margin:18px auto 0}
-.cvd-compare input[type=range]{width:100%;margin-top:12px;accent-color:var(--accent-ink)}
-.cvd-compare figcaption{font-size:14px;color:var(--ink-2);line-height:1.8;margin-top:8px}
-.cvd-compare figcaption a{color:var(--accent-ink);border-bottom:1px solid currentColor}
-/* 作品まわり */
-.work-item h3 a{border-bottom:1px solid transparent}
-.work-item h3 a:hover{border-bottom-color:var(--ink)}
-.hs-note{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin:-4px 0 14px;padding:6px 10px;border-left:2px solid var(--accent-ink);background:var(--bg-2)}
-.hs-note a{color:var(--accent-ink);border-bottom:1px solid currentColor}
-.next-issue{margin-top:80px;border:1px solid var(--ink);display:grid;grid-template-columns:200px 1fr}
-.next-issue .ni-label{background:var(--ink);color:var(--bg);padding:24px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
-.next-issue .ni-label strong{font-family:var(--font-display);font-style:italic;font-size:30px;letter-spacing:0;text-transform:none;font-weight:400}
-.next-issue .ni-body{padding:24px 28px}
-.next-issue h3{font-family:var(--font-display);font-size:32px;font-weight:400;margin-bottom:8px}
-.next-issue h3 .ital{font-size:20px}
-.next-issue p{font-size:14px;color:var(--ink-2)}
-:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
-#contact :focus-visible{outline-color:var(--bg)}
-.research{margin-top:60px;padding:32px;border:1px solid var(--ink);background:var(--bg-2)}
-.research h3{font-family:var(--font-display);font-size:26px;font-weight:400;margin-bottom:12px}
-.research p{font-size:15px;color:var(--ink-2);line-height:1.9;margin-bottom:12px}
-.research p:last-child{margin-bottom:0}
-.research .tags{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.1em;margin-top:16px}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none !important}}
-@media(max-width:820px){.head-l,.masthead-top,.meta,.chap-no,.work-item .work-no,.work-item .tags,.skill-row .level,footer,.social{font-size:12px}.head-r{font-size:13px}.research{padding:24px}.cmp-layer{padding:28px 12px 16px}.bo-block{height:12px}.bo-board,.bo-row{gap:3px}.bo-caps{gap:8px}.next-issue{grid-template-columns:1fr}.cvd-toggle{justify-content:center}.head-inner{grid-template-columns:1fr;text-align:center;gap:12px}.head-l,.head-r{justify-content:center;flex-wrap:wrap;gap:16px}.container{padding:0 24px}.masthead{padding:24px}.lead-grid{grid-template-columns:1fr;gap:24px}.chap{grid-template-columns:1fr;gap:16px}.about-grid{grid-template-columns:1fr}.skill-row{grid-template-columns:50px 1fr;gap:12px}.skill-row .desc,.skill-row .level{grid-column:1 / -1;text-align:left}.works-grid{grid-template-columns:1fr;gap:40px}section{padding:60px 0}footer{flex-direction:column;gap:8px;text-align:center}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<header><div class="head-inner"><div class="head-l" data-cvd-toggle></div><div class="head-c">Inoue Hinata</div><div class="head-r"><a href="#about">About</a><a href="#skills">Skills</a><a href="#works">Works</a><a href="#contact">Contact</a></div></div></header>
-<div class="masthead"><div class="masthead-top"><span>The Portfolio</span><span class="line-h"></span><span>Client-side Engineer</span><span class="line-h"></span><span>Established 2026</span></div><h1 class="title">Inoue <span class="ital">Hinata</span></h1><div class="subtitle">— Client-side Engineer · Games &amp; Web —</div><button type="button" id="title-play" class="title-play" aria-pressed="false" hidden>▶ Play the title</button></div>
-<section class="lead-section"><div class="container"><div class="lead-grid"><div class="meta"><strong>Issue</strong>Portfolio 2026<br><br><strong>Section</strong>Introduction</div><div class="lead-text"><span class="drop">こ</span>んにちは、井上陽向汰です。日常で「あったら便利」と思ったものを、<span class="ital">ブラウザ拡張機能・Webゲーム・Bot</span>といった形にしてきました。きちんと動くことだけでなく、使い心地まで考えながら作るのが好きです。</div><div class="meta"><strong>Status</strong>2028卒 / 就活中<br><br><strong>Location</strong>Nagasaki, Japan</div></div></div></section>
-<section id="about"><div class="container"><div class="chap"><div class="chap-no">Chapter 01 / About</div><div><h2 class="chap-title">An <span class="ital">Introduction</span></h2><div class="chap-sub">— Who I am, briefly</div></div></div><div class="about-grid"><div class="about-col"><p><strong>長崎県出身、井上陽向汰（いのうえ ひなた）と申します。</strong>久留米工業大学 工学部 情報ネットワーク工学科を卒業し、現在は長崎県立大学大学院 情報工学専攻 人間情報科学コースの修士1年です。</p><p>修士研究のテーマは <strong>「色覚特性者向けの個人最適化リアルタイム色補正システム」</strong>。色の見え方は人によって違うので、自作の診断ツールで個人差を測り、その結果に応じて動画やゲーム画面の色をリアルタイムに補正する仕組みを作っています。</p><p>中学生のころにMikuMikuDanceや動画編集に触れたのが、コンピュータでものをつくる入口でした。高校でPythonに触れ、大学に入ってから情報工学を本格的に学ぶように。今はWeb拡張機能、Bot、ゲームなど、興味の向くままに少しずつ形にしています。</p><p>ひとりで作るだけでなく、<strong>チームで動くのも好きです。</strong>グループ開発ではメンバーの意見をまとめて進行を回したり、後輩に教えながら一緒に手を動かすことが多めです。オフの日はカラオケに行ったり、ゲームをしたり、バイクや車で出かけたりしています。</p></div><div class="about-col"><div class="about-quote">技術は手段。<br>解くべきは、いつだって<br>人の課題である。</div><p style="margin-top:24px;font-size:13px;color:var(--ink-3);text-align:center;">— my motto</p></div></div><div class="research"><h3>Research <span class="ital">— 修士研究</span></h3><p>色覚特性のある人向けに、画面の色をリアルタイムで補正するシステムを作っています。Machado (2009) のモデルで見え方をシミュレートし、Daltonize で補正。自作の診断ツールで測った個人差に合わせて、補正の強さを人ごとに最適化します。2026年10月に学会発表（福岡）。</p><p>同じ行列計算でも、実装する環境によって色空間の扱いが変わるのが面白いところです。Python / OpenCV では sRGB を自分で線形化する必要があり（ここを忘れて一度バグらせました）、Unity の Linear カラースペースでは値が既に線形なので、同じ変換を入れると二重になってしまいます。</p><figure class="cvd-compare" data-cvd-compare hidden><div class="cmp"><span class="cmp-tag l">通常</span><span class="cmp-tag r">P型シミュレーション</span><div class="cmp-layer cmp-base"></div><div class="cmp-layer cmp-sim" aria-hidden="true"></div><div class="cmp-line"></div></div><input type="range" min="0" max="100" value="50" aria-label="比較の境目の位置（左が通常、右がP型シミュレーション）"><figcaption>自作の <a href="works/breakout.html">Breakout</a> の配色を、研究と同じ行列（Machado 2009 / P型・重度）で変換して比べたものです。スライダーで境目を動かせます。<strong>2〜4段目の紫・青紫・青がほぼ同じ青に寄ってしまい、段の区別がつきにくい</strong>ことが分かりました。パワーアップのカプセルには文字（W / P / M / S / L）が入っているので、色が寄っても見分けられます。</figcaption></figure><div class="tags"><span>Python</span><span>OpenCV</span><span>Color Vision</span><span>Real-time</span></div></div></div></section>
-<section id="skills"><div class="container"><div class="chap"><div class="chap-no">Chapter 02 / Skills</div><div><h2 class="chap-title">The <span class="ital">Toolkit</span></h2><div class="chap-sub">— Things I work with</div></div></div><div class="skill-table">
-<div class="skill-row"><div class="num">— 01</div><div class="name">JavaScript</div><div class="desc">メイン言語。Chrome拡張、Webゲーム、Botなど複数の作品で使用。</div><div class="level"><strong>Primary</strong>主軸</div></div>
-<div class="skill-row"><div class="num">— 02</div><div class="name">HTML <span class="ital">/ CSS</span></div><div class="desc">レスポンシブ対応、Grid／Flexboxを使ったレイアウト。本サイトもCSSのみで実装。</div><div class="level"><strong>Advanced</strong>全Web作品で</div></div>
-<div class="skill-row"><div class="num">— 03</div><div class="name">Chrome <span class="ital">Extension / PWA</span></div><div class="desc">Manifest V3、Service Worker、OAuth 2.0、外部API連携。Trusted Types CSPやクロスオリジン制約への対応経験あり。</div><div class="level"><strong>Advanced</strong>2作品で実装</div></div>
-<div class="skill-row"><div class="num">— 04</div><div class="name">Go</div><div class="desc">Discord Botを1本。形態素解析と組み合わせた検出ロジックや、SQLiteでの状態管理を書きました。</div><div class="level"><strong>Intermediate</strong>個人開発</div></div>
-<div class="skill-row"><div class="num">— 05</div><div class="name">Python</div><div class="desc">研究や自作ツール、データ処理などで使用。</div><div class="level"><strong>Intermediate</strong>研究 / 独学</div></div>
-<div class="skill-row"><div class="num">— 06</div><div class="name">Game <span class="ital">Development</span></div><div class="desc">Processing / p5.js / Canvas でのゲーム制作。Unity (C#) で色覚特性をテーマにしたパズルゲームを制作中（2026年10月公開予定）。</div><div class="level"><strong>Ongoing</strong>個人開発</div></div>
-</div></div></section>
-<section id="works"><div class="container"><div class="chap"><div class="chap-no">Chapter 03 / Works</div><div><h2 class="chap-title">Selected <span class="ital">Works</span></h2><div class="chap-sub">— Personal projects</div></div></div><div class="works-grid">
-<article class="work-item"><div class="work-no"><span>— 01</span><span>2026</span></div><div class="vis v4">BR</div><h3><a href="works/breakout.html">Breakout <span class="ital">— ブロック崩し</span></a></h3><p class="desc">p5.js で作ったブロック崩し。CDN以外の依存はなく、HTMLファイル1つで動きます。固定ステージは6種類（CLASSIC / TOUGH ROW / PYRAMID / CORRIDORS / CHECKER / FORTRESS）。Stage 7以降は <strong>12種類のシェイプから毎回ランダム</strong> で生成。パワーアップ5種（貫通・マルチボール・パドル拡大・スローボール・ライフ追加）は重み付き抽選で出現するので、何度遊んでも展開が変わります。</p><p class="hs-note" data-breakout-hs hidden>このブラウザでのあなたのハイスコア: <strong data-hs-value></strong> 点 — <a href="https://magu0914.github.io/break-out-game/">更新しにいく</a></p><div class="tags"><span>p5.js</span><span>JavaScript</span><span>Canvas</span><span>Game</span></div><div class="work-links"><a href="works/breakout.html">Story</a><a href="https://magu0914.github.io/break-out-game/" target="_blank" rel="noopener">Play</a><a href="https://github.com/magu0914/break-out-game" target="_blank" rel="noopener">GitHub</a></div></article>
-<article class="work-item"><div class="work-no"><span>— 02</span><span>2026</span></div><div class="vis v2">PT</div><h3><a href="works/photo-tagger.html">Photo <span class="ital">Tagger</span></a></h3><p class="desc">Google フォトに独自タグを付けて、数千枚の中から目的の写真を素早く探せるツール。PCはChrome拡張、スマホはPWAで役割を分け、タグデータはGoogle Driveの <code style="font-family:var(--font-mono);font-size:12px;">appDataFolder</code> に保存するのでサーバーは不要です。Google フォトのTrusted Types CSP下で <code style="font-family:var(--font-mono);font-size:12px;">innerHTML</code> が使えないため全UIを <code style="font-family:var(--font-mono);font-size:12px;">createElement</code> で構築し、クロスオリジン制約のあるサムネイルはChrome側でbase64化してPWAから読めるようにしました。</p><div class="tags"><span>Chrome Extension</span><span>PWA</span><span>Manifest V3</span><span>OAuth 2.0</span><span>Google Drive API</span></div><div class="work-links"><a href="works/photo-tagger.html">Story</a><a href="https://github.com/magu0914/photo-tagger" target="_blank" rel="noopener">GitHub</a></div></article>
-<article class="work-item"><div class="work-no"><span>— 03</span><span>2026</span></div><div class="vis v3">川</div><h3><a href="works/senryu-bot.html">Senryu <span class="ital">Bot</span></a></h3><p class="desc">Discordの会話に紛れ込んだ「5・7・5」を自動で見つけてリプライするBot。慣用句やコード片を誤検出しないよう、形態素解析の結果を <strong>文節境界に厳密に揃える</strong> ホワイトリスト方式の検出ロジックにしています（手元で集めた誤検出24件を全て解消、正規の川柳検出は維持）。今日の一句・日次サマリー・月間MVPの自動投稿、ランキング、詠み人当てクイズなどのスラッシュコマンドも入っています。Goで実装、SQLiteも純Go実装にしているのでビルドがシンプル。</p><div class="tags"><span>Go</span><span>Discord Bot</span><span>形態素解析</span><span>SQLite</span><span>Docker</span></div><div class="work-links"><a href="works/senryu-bot.html">Story</a><a href="https://github.com/magu0914/senryu-bot" target="_blank" rel="noopener">GitHub</a></div></article>
-<article class="work-item"><div class="work-no"><span>— 04</span><span>2026</span></div><div class="vis v1">文</div><h3><a href="works/character-counter.html">Character Counter <span class="ital">— 文字カウント拡張</span></a></h3><p class="desc">ブラウザで選択したテキストの文字数を、その場に表示するChrome拡張機能。<code style="font-family:var(--font-mono);font-size:12px;">selectionchange</code> を主トリガーにしているので、マウスでもキーボード（Shift+矢印 / Ctrl+A）でも反応します。iframe 内のフォームでも動くよう Manifest V3 の <code style="font-family:var(--font-mono);font-size:12px;">all_frames</code> と <code style="font-family:var(--font-mono);font-size:12px;">match_origin_as_fallback</code> を設定。空白を除いた文字数を返すロジックは content / popup で共通化しました。</p><div class="tags"><span>Chrome Extension</span><span>Manifest V3</span><span>JavaScript</span><span>HTML / CSS</span></div><div class="work-links"><a href="works/character-counter.html">Story</a><a href="https://github.com/magu0914/character-counter" target="_blank" rel="noopener">GitHub</a></div></article>
-</div><aside class="next-issue" aria-label="次号予告"><div class="ni-label"><span>Next Issue</span><strong>Vol. 02</strong><span>Coming 2026.10</span></div><div class="ni-body"><h3>視界 <span class="ital">— Unity / C#</span></h3><p>色覚特性をテーマにしたパズルゲームを Unity で制作中です。研究で扱っている「人によって色の見え方が違う」ことを、遊びの仕掛けにできないかを試しています。ブラウザ（WebGL）で遊べる形で公開予定。</p></div></aside></div></section>
-<section id="contact"><div class="container contact-inner"><div class="chap"><div class="chap-no">Chapter 04 / Contact</div><div><h2 class="chap-title">Let's <span class="ital">Talk</span></h2><div class="chap-sub">— Get in touch</div></div></div><div class="big">Say <span class="ital">hello.</span></div><a href="mailto:hinatainoue0914@gmail.com" class="email">hinatainoue0914@gmail.com</a><div class="social"><a href="https://github.com/magu0914" target="_blank" rel="noopener">GitHub</a></div></div></section>
-<footer><div>&copy; 2026 Inoue Hinata &middot; All rights reserved</div><div>Vol. 01 / Made in Nagasaki</div></footer>
+<a class="skip" href="#about">本文へスキップ</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#top"><span aria-hidden="true" class="brand-mark"></span>Inoue Hinata</a>
+    <nav class="menu" aria-label="メニュー">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#works">Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="cvd-host" data-cvd-toggle></div>
+  </div>
+</header>
+
+<main>
+<!-- ===== TITLE SCREEN ===== -->
+<div class="title-screen" id="top">
+  <div class="masthead">
+    <p class="ts-pre" aria-hidden="true">— PORTFOLIO 2026 —</p>
+    <h1 class="title">Inoue <span class="ital">Hinata</span></h1>
+    <p class="subtitle">Client-side Engineer · Games &amp; Web</p>
+    <p class="press"><a href="#about" class="press-start"><span class="blink" aria-hidden="true">▶ </span>PRESS START</a></p>
+    <button type="button" id="title-play" class="title-play" aria-pressed="false" hidden>▶ Play the title</button>
+    <p class="ts-copy">© 2026 INOUE HINATA · MADE IN NAGASAKI</p>
+  </div>
+</div>
+
+<!-- ===== OPENING (lead) ===== -->
+<section class="opening" aria-label="ごあいさつ">
+  <div class="wrap">
+    <div class="msg-window">
+      <p class="msg-speaker">ヒナタ</p>
+      <p class="msg-text">こんにちは、井上陽向汰です。日常で「あったら便利」と思ったものを、<em>ブラウザ拡張機能・Webゲーム・Bot</em>といった形にしてきました。きちんと動くことだけでなく、使い心地まで考えながら作るのが好きです。<span class="msg-next" aria-hidden="true">▼</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT: キャラクター紹介 ===== -->
+<section id="about" class="screen">
+  <div class="wrap">
+    <div class="screen-head">
+      <p class="screen-no">SCREEN 01</p>
+      <h2 class="screen-title">CHARACTER<span class="screen-ja">キャラクター紹介</span></h2>
+    </div>
+
+    <div class="chara">
+      <div class="chara-card win">
+        <svg class="sprite" viewBox="0 0 16 16" role="img" aria-label="主人公のドット絵（装飾）" shape-rendering="crispEdges">
+          <rect x="4" y="1" width="8" height="3" fill="#2E2A3A"/>
+          <rect x="3" y="3" width="10" height="2" fill="#2E2A3A"/>
+          <rect x="4" y="5" width="8" height="4" fill="#F2C7A5"/>
+          <rect x="5" y="6" width="1" height="1" fill="#0E1116"/>
+          <rect x="10" y="6" width="1" height="1" fill="#0E1116"/>
+          <rect x="7" y="8" width="2" height="1" fill="#D27C6B"/>
+          <rect x="3" y="9" width="10" height="5" fill="#5DA9FF"/>
+          <rect x="7" y="9" width="2" height="5" fill="#E6EDF3"/>
+          <rect x="2" y="10" width="1" height="3" fill="#F2C7A5"/>
+          <rect x="13" y="10" width="1" height="3" fill="#F2C7A5"/>
+          <rect x="4" y="14" width="3" height="2" fill="#2E2A3A"/>
+          <rect x="9" y="14" width="3" height="2" fill="#2E2A3A"/>
+        </svg>
+        <dl class="prof">
+          <div><dt>NAME</dt><dd>井上 陽向汰<span class="kana">いのうえ ひなた</span></dd></div>
+          <div><dt>CLASS</dt><dd>Client-side Engineer</dd></div>
+          <div><dt>HOME</dt><dd>Nagasaki, Japan</dd></div>
+          <div><dt>STATUS</dt><dd>2028卒 / 就活中</dd></div>
+          <div><dt>GUILD</dt><dd>長崎県立大学大学院 M1</dd></div>
+        </dl>
+      </div>
+
+      <div class="chara-text">
+        <div class="win win-text">
+          <p class="win-label">PROFILE</p>
+          <p><strong>長崎県出身、井上陽向汰（いのうえ ひなた）と申します。</strong>久留米工業大学 工学部 情報ネットワーク工学科を卒業し、現在は長崎県立大学大学院 情報工学専攻 人間情報科学コースの修士1年です。</p>
+          <p>修士研究のテーマは <strong>「色覚特性者向けの個人最適化リアルタイム色補正システム」</strong>。色の見え方は人によって違うので、自作の診断ツールで個人差を測り、その結果に応じて動画やゲーム画面の色をリアルタイムに補正する仕組みを作っています。</p>
+          <p>中学生のころにMikuMikuDanceや動画編集に触れたのが、コンピュータでものをつくる入口でした。高校でPythonに触れ、大学に入ってから情報工学を本格的に学ぶように。今はWeb拡張機能、Bot、ゲームなど、興味の向くままに少しずつ形にしています。</p>
+          <p>ひとりで作るだけでなく、<strong>チームで動くのも好きです。</strong>グループ開発ではメンバーの意見をまとめて進行を回したり、後輩に教えながら一緒に手を動かすことが多めです。オフの日はカラオケに行ったり、ゲームをしたり、バイクや車で出かけたりしています。</p>
+        </div>
+        <figure class="win motto">
+          <p class="win-label">MOTTO</p>
+          <blockquote>技術は手段。<br>解くべきは、いつだって<br>人の課題である。</blockquote>
+          <figcaption>— my motto</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESEARCH: ワールド設定資料 ===== -->
+<section id="research" class="screen screen-alt" aria-labelledby="research-h">
+  <div class="wrap">
+    <div class="screen-head">
+      <p class="screen-no">SCREEN 02</p>
+      <h2 class="screen-title" id="research-h">WORLD LORE<span class="screen-ja">ワールド観 / 設定資料 — 修士研究</span></h2>
+    </div>
+
+    <div class="lore">
+      <article class="win lore-doc">
+        <p class="win-label">設定資料 No.001 — Research</p>
+        <h3 class="lore-title">人によって、世界の色は違って見える</h3>
+        <p>色覚特性のある人向けに、画面の色をリアルタイムで補正するシステムを作っています。Machado (2009) のモデルで見え方をシミュレートし、Daltonize で補正。自作の診断ツールで測った個人差に合わせて、補正の強さを人ごとに最適化します。2026年10月に学会発表（福岡）。</p>
+        <p>同じ行列計算でも、実装する環境によって色空間の扱いが変わるのが面白いところです。Python / OpenCV では sRGB を自分で線形化する必要があり（ここを忘れて一度バグらせました）、Unity の Linear カラースペースでは値が既に線形なので、同じ変換を入れると二重になってしまいます。</p>
+        <ul class="chips" aria-label="キーワード"><li>Python</li><li>OpenCV</li><li>Color Vision</li><li>Real-time</li></ul>
+      </article>
+
+      <figure class="cvd-compare win" data-cvd-compare hidden><div class="cmp"><span class="cmp-tag l">通常</span><span class="cmp-tag r">P型シミュレーション</span><div class="cmp-layer cmp-base"></div><div class="cmp-layer cmp-sim" aria-hidden="true"></div><div class="cmp-line"></div></div><input type="range" min="0" max="100" value="50" aria-label="比較の境目の位置（左が通常、右がP型シミュレーション）"><figcaption>自作の <a href="works/breakout.html">Breakout</a> の配色を、研究と同じ行列（Machado 2009 / P型・重度）で変換して比べたものです。スライダーで境目を動かせます。<strong>2〜4段目の紫・青紫・青がほぼ同じ青に寄ってしまい、段の区別がつきにくい</strong>ことが分かりました。パワーアップのカプセルには文字（W / P / M / S / L）が入っているので、色が寄っても見分けられます。</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS: ステータス画面 ===== -->
+<section id="skills" class="screen" aria-labelledby="skills-h">
+  <div class="wrap">
+    <div class="screen-head">
+      <p class="screen-no">SCREEN 03</p>
+      <h2 class="screen-title" id="skills-h">STATUS<span class="screen-ja">ステータス — スキル（自己申告レベル / 10）</span></h2>
+    </div>
+
+    <div class="win status">
+      <div class="status-top">
+        <p><span class="k">NAME</span> HINATA</p>
+        <p><span class="k">CLASS</span> Client-side Engineer</p>
+        <p class="status-note">※ LV はすべて<strong>自己申告</strong>（最大 10）</p>
+      </div>
+      <ol class="stats">
+        <li class="stat">
+          <span class="stat-name">JavaScript</span>
+          <span class="stat-lv"><abbr title="レベル">LV</abbr> <b>7</b><span class="max">/10</span></span>
+          <span class="gauge" style="--lv:7" aria-hidden="true"></span>
+          <span class="stat-desc">メイン言語。Chrome拡張・Webゲーム・Bot</span>
+        </li>
+        <li class="stat">
+          <span class="stat-name">HTML / CSS</span>
+          <span class="stat-lv"><abbr title="レベル">LV</abbr> <b>7</b><span class="max">/10</span></span>
+          <span class="gauge" style="--lv:7" aria-hidden="true"></span>
+          <span class="stat-desc">レスポンシブ、Grid / Flexbox</span>
+        </li>
+        <li class="stat">
+          <span class="stat-name">Chrome Extension / PWA</span>
+          <span class="stat-lv"><abbr title="レベル">LV</abbr> <b>6</b><span class="max">/10</span></span>
+          <span class="gauge" style="--lv:6" aria-hidden="true"></span>
+          <span class="stat-desc">MV3、Service Worker、OAuth 2.0、Trusted Types CSP</span>
+        </li>
+        <li class="stat">
+          <span class="stat-name">Python</span>
+          <span class="stat-lv"><abbr title="レベル">LV</abbr> <b>6</b><span class="max">/10</span></span>
+          <span class="gauge" style="--lv:6" aria-hidden="true"></span>
+          <span class="stat-desc">研究・画像処理・データ処理</span>
+        </li>
+        <li class="stat">
+          <span class="stat-name">Go</span>
+          <span class="stat-lv"><abbr title="レベル">LV</abbr> <b>3</b><span class="max">/10</span></span>
+          <span class="gauge" style="--lv:3" aria-hidden="true"></span>
+          <span class="stat-desc">Discord Bot 1本、SQLite</span>
+        </li>
+        <li class="stat">
+          <span class="stat-name">Unity (C#)</span>
+          <span class="stat-lv"><abbr title="レベル">LV</abbr> <b>2</b><span class="max">/10</span></span>
+          <span class="gauge" style="--lv:2" aria-hidden="true"></span>
+          <span class="stat-desc">修行中。色覚パズル「視界」を制作中</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORKS: ステージセレクト ===== -->
+<section id="works" class="screen screen-alt" aria-labelledby="works-h">
+  <div class="wrap">
+    <div class="screen-head">
+      <p class="screen-no">SCREEN 04</p>
+      <h2 class="screen-title" id="works-h">STAGE SELECT<span class="screen-ja">ステージセレクト — 作品</span></h2>
+    </div>
+
+    <h3 class="world">WORLD 1 <span>— 公開中の作品</span></h3>
+    <div class="stages">
+      <article class="stage">
+        <div class="stage-head"><span class="stage-no">1-1</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-vis sv1" aria-hidden="true"><span>BR</span></div>
+        <h4 class="stage-name"><a href="works/breakout.html">BREAKOUT <span class="ja">— ブロック崩し</span></a></h4>
+        <p class="stage-line">p5.js 製、HTML 1枚で動くブロック崩し。</p>
+        <p class="stage-desc">p5.js で作ったブロック崩し。CDN以外の依存はなく、HTMLファイル1つで動きます。固定ステージは6種類（CLASSIC / TOUGH ROW / PYRAMID / CORRIDORS / CHECKER / FORTRESS）。Stage 7以降は <strong>12種類のシェイプから毎回ランダム</strong> で生成。パワーアップ5種（貫通・マルチボール・パドル拡大・スローボール・ライフ追加）は重み付き抽選で出現するので、何度遊んでも展開が変わります。</p>
+        <p class="hs-note" data-breakout-hs hidden>このブラウザでのあなたのハイスコア: <strong data-hs-value></strong> 点 — <a href="https://magu0914.github.io/break-out-game/">更新しにいく</a></p>
+        <ul class="chips" aria-label="使用技術"><li>p5.js</li><li>JavaScript</li><li>Canvas</li><li>Game</li></ul>
+        <div class="stage-links"><a href="works/breakout.html">Story</a><a href="https://magu0914.github.io/break-out-game/" target="_blank" rel="noopener">Play</a><a href="https://github.com/magu0914/break-out-game" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+
+      <article class="stage">
+        <div class="stage-head"><span class="stage-no">1-2</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-vis sv2" aria-hidden="true"><span>PT</span></div>
+        <h4 class="stage-name"><a href="works/photo-tagger.html">PHOTO TAGGER</a></h4>
+        <p class="stage-line">Google フォトに独自タグを付けて探すツール。</p>
+        <p class="stage-desc">Google フォトに独自タグを付けて、数千枚の中から目的の写真を素早く探せるツール。PCはChrome拡張、スマホはPWAで役割を分け、タグデータはGoogle Driveの <code>appDataFolder</code> に保存するのでサーバーは不要です。Google フォトのTrusted Types CSP下で <code>innerHTML</code> が使えないため全UIを <code>createElement</code> で構築し、クロスオリジン制約のあるサムネイルはChrome側でbase64化してPWAから読めるようにしました。</p>
+        <ul class="chips" aria-label="使用技術"><li>Chrome Extension</li><li>PWA</li><li>Manifest V3</li><li>OAuth 2.0</li><li>Google Drive API</li></ul>
+        <div class="stage-links"><a href="works/photo-tagger.html">Story</a><a href="https://github.com/magu0914/photo-tagger" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+
+      <article class="stage">
+        <div class="stage-head"><span class="stage-no">1-3</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-vis sv3" aria-hidden="true"><span>川</span></div>
+        <h4 class="stage-name"><a href="works/senryu-bot.html">SENRYU BOT</a></h4>
+        <p class="stage-line">会話に紛れた「5・7・5」を見つける Discord Bot。</p>
+        <p class="stage-desc">Discordの会話に紛れ込んだ「5・7・5」を自動で見つけてリプライするBot。慣用句やコード片を誤検出しないよう、形態素解析の結果を <strong>文節境界に厳密に揃える</strong> ホワイトリスト方式の検出ロジックにしています（手元で集めた誤検出24件を全て解消、正規の川柳検出は維持）。今日の一句・日次サマリー・月間MVPの自動投稿、ランキング、詠み人当てクイズなどのスラッシュコマンドも入っています。Goで実装、SQLiteも純Go実装にしているのでビルドがシンプル。</p>
+        <ul class="chips" aria-label="使用技術"><li>Go</li><li>Discord Bot</li><li>形態素解析</li><li>SQLite</li><li>Docker</li></ul>
+        <div class="stage-links"><a href="works/senryu-bot.html">Story</a><a href="https://github.com/magu0914/senryu-bot" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+
+      <article class="stage">
+        <div class="stage-head"><span class="stage-no">1-4</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-vis sv4" aria-hidden="true"><span>文</span></div>
+        <h4 class="stage-name"><a href="works/character-counter.html">CHARACTER COUNTER <span class="ja">— 文字カウント拡張</span></a></h4>
+        <p class="stage-line">選択したテキストの文字数をその場に出す拡張。</p>
+        <p class="stage-desc">ブラウザで選択したテキストの文字数を、その場に表示するChrome拡張機能。<code>selectionchange</code> を主トリガーにしているので、マウスでもキーボード（Shift+矢印 / Ctrl+A）でも反応します。iframe 内のフォームでも動くよう Manifest V3 の <code>all_frames</code> と <code>match_origin_as_fallback</code> を設定。空白を除いた文字数を返すロジックは content / popup で共通化しました。</p>
+        <ul class="chips" aria-label="使用技術"><li>Chrome Extension</li><li>Manifest V3</li><li>JavaScript</li><li>HTML / CSS</li></ul>
+        <div class="stage-links"><a href="works/character-counter.html">Story</a><a href="https://github.com/magu0914/character-counter" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+    </div>
+
+    <h3 class="world">WORLD 2 <span>— COMING SOON / 開発中の作品</span></h3>
+    <div class="stages stages-locked">
+      <article class="stage locked">
+        <div class="stage-head"><span class="stage-no">2-1</span><span class="stage-state"><span class="lock" aria-hidden="true"></span>LOCKED<span class="sr-only">（開発中）</span></span></div>
+        <h4 class="stage-name"><span class="jp-name">視界</span> <span class="ja">— Unity / C#</span></h4>
+        <p class="stage-line">色覚特性をテーマにしたパズルゲーム。</p>
+        <p class="stage-desc">色覚特性をテーマにしたパズルゲーム。研究で扱っている「人によって色の見え方が違う」ことを遊びの仕掛けにできないか試している。ブラウザ（WebGL）で遊べる形で公開予定（2026.10）。</p>
+        <p class="unlock">UNLOCK: 2026.10 予定</p>
+      </article>
+
+      <article class="stage locked stage-wide">
+        <div class="stage-head"><span class="stage-no">2-2</span><span class="stage-state"><span class="lock" aria-hidden="true"></span>LOCKED<span class="sr-only">（開発中）</span></span></div>
+        <h4 class="stage-name">WIZARD TRIAL（仮）<span class="ja">— 魔法学校バトルロワイヤル（Unity 6 / C#）</span></h4>
+        <p class="stage-line copy">倒されても終わらない。前後半2部制の魔法学校バトロワ。</p>
+        <div class="shots">
+          <figure><img src="assets/wizard/combat.jpg" width="1200" height="675" loading="lazy" alt="前半・防衛戦の画面。草原に石のアーチと城壁が並び、上部にウェーブ2/3・残り14体・城壁72%、下部に火球などの魔法スロットとHP・MPゲージが表示されている"><figcaption>前半・防衛戦</figcaption></figure>
+          <figure><img src="assets/wizard/midterm.jpg" width="1200" height="675" loading="lazy" alt="中間発表・ショップの画面。夕焼けの広場に青・赤・緑の3体の表彰台のようなオブジェが並び、上部に中間発表の順位と成績が表示されている"><figcaption>中間発表・ショップ</figcaption></figure>
+          <figure><img src="assets/wizard/boss.jpg" width="1200" height="675" loading="lazy" alt="門番ボスの画面。赤い山に囲まれた砂漠の高台に、胸に黄色い菱形の紋章を持つ石のゴーレムが立っている"><figcaption>賭け型の門番ボス</figcaption></figure>
+        </div>
+        <div class="wiz-grid">
+          <div>
+            <p class="sub-h">面白さの核</p>
+            <ul class="dots">
+              <li><strong>魔法同士の相殺</strong> — 火球と水球がぶつかると属性相性で片方が消える。相殺から帯電した水面や水蒸気の雲が生まれる</li>
+              <li><strong>前後半2部制</strong> — 前半で倒されても、中間発表とショップを挟んで後半に復活参加できる</li>
+              <li><strong>賭け型の門番ボス</strong> — 賭けるほどボスが硬くなり、倒したときの配点も上がる</li>
+            </ul>
+          </div>
+          <div>
+            <p class="sub-h">技術</p>
+            <ul class="dots">
+              <li>バランス数値は JSON 18種のデータ駆動</li>
+              <li>画面なしで100試合を回すシミュレーションで調整</li>
+              <li>文字列ハッシュを FNV-1a に置き換えて結果を決定論的に</li>
+            </ul>
+            <dl class="wiz-meta">
+              <div><dt>状態</dt><dd>開発中。Bot 36人との対戦が動く。オンライン対戦は今後</dd></div>
+              <div><dt>担当</dt><dd><!-- 要確認: 担当範囲 -->企画・ゲームデザイン・バランス調整</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT: CONTINUE? ===== -->
+<section id="contact" class="screen continue" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div class="screen-head center">
+      <p class="screen-no">SCREEN 05</p>
+      <h2 class="screen-title" id="contact-h">CONTINUE?<span class="screen-ja">パーティに誘う — 連絡先</span></h2>
+    </div>
+    <div class="win continue-box">
+      <p class="continue-q">一緒に冒険してくれる仲間を探しています。</p>
+      <ul class="choices">
+        <li><a href="mailto:hinatainoue0914@gmail.com" class="choice"><span class="choice-k">YES</span><span class="choice-v">パーティに誘う（メール）<span class="mail">hinatainoue0914@gmail.com</span></span></a></li>
+        <li><a href="https://github.com/magu0914" target="_blank" rel="noopener" class="choice"><span class="choice-k">INFO</span><span class="choice-v">装備を確認する（GitHub）<span class="mail">github.com/magu0914</span></span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS ===== -->
+<section id="achievements" class="screen screen-alt" aria-labelledby="ach-h">
+  <div class="wrap">
+    <div class="screen-head">
+      <p class="screen-no">SCREEN 06</p>
+      <h2 class="screen-title" id="ach-h">TROPHIES<span class="screen-ja">実績一覧</span></h2>
+    </div>
+    <div class="win ach-panel">
+      <div class="ach-summary">
+        <p class="ach-count-line"><span class="k">UNLOCKED</span> <span class="ach-count" data-ach-count></span></p>
+        <span class="ach-track" aria-hidden="true"><span class="ach-fill" data-ach-bar></span></span>
+        <p class="ach-hint">このサイトの中に実績が隠れています。進み具合はこのブラウザにだけ保存されます。</p>
+      </div>
+      <ul class="ach-list" data-ach-list></ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== STAFF ROLL ===== -->
+<footer class="credits" data-ach-end>
+  <div class="wrap">
+    <p class="credits-h">STAFF</p>
+    <dl class="roll">
+      <div><dt>Programming</dt><dd>Inoue Hinata</dd></div>
+      <div><dt>Design</dt><dd>Inoue Hinata</dd></div>
+      <div><dt>Research</dt><dd>Inoue Hinata</dd></div>
+      <div><dt>Color Model</dt><dd>Machado, Oliveira &amp; Fernandes (2009)</dd></div>
+      <div><dt>Fonts</dt><dd>Google Fonts</dd></div>
+      <div><dt>Special Thanks</dt><dd>ここまで読んでくれたあなた</dd></div>
+    </dl>
+    <p class="thanks">THANK YOU FOR PLAYING</p>
+    <p class="fin">© 2026 Inoue Hinata · <a href="mailto:hinatainoue0914@gmail.com">hinatainoue0914@gmail.com</a> · <a href="https://github.com/magu0914" target="_blank" rel="noopener">GitHub</a></p>
+    <p class="back"><a href="#top">▲ TITLE へ戻る</a></p>
+  </div>
+</footer>
+
 <script src="assets/site.js" defer></script>
+<script src="assets/fun.js" defer></script>
 <script src="assets/title-breakout.js" defer></script>
 </body>
 </html>

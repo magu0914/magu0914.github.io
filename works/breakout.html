@@ -11,23 +11,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23fafaf7%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%236b8caf%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%234a6a8c%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%232a2a2a%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="feature.css">
 </head>
 <body>
-<header><div class="head-inner"><div class="head-l" data-cvd-toggle></div><div class="head-c"><a href="../">Inoue Hinata</a></div><div class="head-r"><a href="../#works">← Works</a></div></div></header>
-<main>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../"><span aria-hidden="true" class="brand-mark"></span>Inoue Hinata</a><nav class="menu" aria-label="メニュー"><a href="../#works">Works</a><a href="../#contact">Contact</a></nav><div class="cvd-host" data-cvd-toggle></div></div></header>
+<main id="main">
 <article>
 <div class="f-head"><div class="wrap">
-<p class="kicker">Feature 01 / Works</p>
+<p class="kicker">STAGE 1-1 / STORY</p>
 <h1>Breakout <span class="ital">— ブロック崩し</span></h1>
 <p class="dek">何度遊んでも展開が変わるように作り直した、ブラウザですぐ遊べるブロック崩し。</p>
 <dl class="facts"><div><dt>Play</dt><dd><a href="https://magu0914.github.io/break-out-game/">ブラウザで遊ぶ</a></dd></div><div><dt>Tech</dt><dd>p5.js / Web Audio API / Canvas</dd></div><div><dt>Source</dt><dd><a href="https://github.com/magu0914/break-out-game">GitHub</a></dd></div></dl>
 </div></div>
-<section class="wrap f-sec"><div class="f-no">01 / Why</div><div><h2>きっかけ</h2>
+<section class="wrap f-sec"><div class="f-no">01 WHY</div><div class="f-body"><h2>きっかけ</h2>
 <p>元になったのは、学部の講義で作ったブロック崩しです。動きはするものの、毎回同じ配置なので <strong>2回目からはただの作業</strong> になってしまうのが不満でした。</p><p class="pull">「もう1回」と思ってもらえるブロック崩しにしたい。</p><p>それを目標に、ステージ構成とパワーアップの出方を一から考え直しました。</p>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">02 / Process</div><div><h2>作るまでの <span class="ital">流れ</span></h2>
+<section class="wrap f-sec"><div class="f-no">02 PROCESS</div><div class="f-body"><h2>作るまでの <span class="ital">流れ</span></h2>
 <ol class="timeline">
 <li><span class="when">学部</span><span class="what">講義でブロック崩しを作る</span><span class="why">固定配置・1ステージのシンプルなもの。</span></li>
 <li><span class="when">Step 1</span><span class="what">固定ステージを6つ用意する</span><span class="why">CLASSIC → TOUGH ROW → PYRAMID → CORRIDORS → CHECKER → FORTRESS と、2-hit ブロックの量と配置で難しさの階段を作る。</span></li>
@@ -38,10 +40,10 @@
 <li><span class="when">2026.10</span><span class="what">自分の研究で配色をチェック</span><span class="why">P型の見え方で、ブロックの段の色が見分けにくいことが分かった（→ 05）。</span></li>
 </ol>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">03 / Design</div><div><h2>工夫したこと</h2>
+<section class="wrap f-sec"><div class="f-no">03 DESIGN</div><div class="f-body"><h2>工夫したこと</h2>
 <p><strong>ランダムでも理不尽にしない。</strong> Stage 7 以降は、ステージが進むほど 2-hit ブロックを <code>2 + floor(差分 × 1.5)</code> 個（上限14個）上乗せしています。ランダムなのは配置だけで、難しさは少しずつ上がるようにしました。</p><p><strong>強いものほど出にくく。</strong> ブロックを壊すと 22% でカプセルが落ちます。中身の出やすさは次のとおりです。</p><div class="bars" role="img" aria-label="パワーアップの出現率: WIDE 25%、PIERCE 25%、MULTI 25%、SLOW 約17%、+LIFE 約8%"><div class="bar"><span>WIDE</span><span class="track"><span class="fill" style="width:25.0%"></span></span><span class="val">25%</span></div><div class="bar"><span>PIERCE</span><span class="track"><span class="fill" style="width:25.0%"></span></span><span class="val">25%</span></div><div class="bar"><span>MULTI</span><span class="track"><span class="fill" style="width:25.0%"></span></span><span class="val">25%</span></div><div class="bar"><span>SLOW</span><span class="track"><span class="fill" style="width:16.666666666666664%"></span></span><span class="val">約17%</span></div><div class="bar"><span>+LIFE</span><span class="track"><span class="fill" style="width:8.333333333333332%"></span></span><span class="val">約8%</span></div></div><p class="figcap">抽選は「WIDE×3, PIERCE×3, MULTI×3, SLOW×2, LIFE×1」の12枠から1つを引く方式。</p><p>残機が増える +LIFE は、出すぎると緊張感がなくなるので一番出にくくしています。逆に、取りこぼし対策の WIDE や一気に崩せる PIERCE / MULTI は「取れると気持ちいい」枠として多めです。</p>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">04 / Fixes</div><div><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
+<section class="wrap f-sec"><div class="f-no">04 FIXES</div><div class="f-body"><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
 <div class="fixes">
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>毎回同じ配置で、2回目から飽きる</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>Stage 7 以降を12種類のシェイプからランダム生成</div></div>
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>パワーアップがどれも同じ頻度だと、強いものが出すぎてバランスが崩れる</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>重み付き抽選にして、+LIFE は約8%に</div></div>
@@ -49,8 +51,8 @@
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>ハイスコアがリロードで消える</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>localStorage に保存（このサイトのトップにも、あなたのハイスコアが出ます）</div></div>
 </div>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">05 / Next</div><div><h2>次にやること</h2>
-<p>修士研究で使っている色覚シミュレーション（Machado 2009）にこのゲームの配色を通したところ、<strong>P型の見え方では2〜4段目の紫・青紫・青がほぼ同じ青に寄ってしまう</strong>ことが分かりました。段ごとに得点が違うので、色が見分けにくいと損をしてしまいます。</p><p>パワーアップはカプセルに文字（W / P / M / S / L）が入っているので問題ありません。ブロックにも、明るさの差や模様など <strong>色以外の手がかり</strong> を足すのが次の改善です。比較は <a href="../#about" style="color:var(--accent-ink);border-bottom:1px solid currentColor">トップページの研究紹介</a> でスライダーで見られます。</p>
+<section class="wrap f-sec"><div class="f-no">05 NEXT</div><div class="f-body"><h2>次にやること</h2>
+<p>修士研究で使っている色覚シミュレーション（Machado 2009）にこのゲームの配色を通したところ、<strong>P型の見え方では2〜4段目の紫・青紫・青がほぼ同じ青に寄ってしまう</strong>ことが分かりました。段ごとに得点が違うので、色が見分けにくいと損をしてしまいます。</p><p>パワーアップはカプセルに文字（W / P / M / S / L）が入っているので問題ありません。ブロックにも、明るさの差や模様など <strong>色以外の手がかり</strong> を足すのが次の改善です。比較は <a href="../#research">トップページの研究紹介</a> でスライダーで見られます。</p>
 </div></section>
 
 </article>
@@ -59,7 +61,8 @@
 <a class="next" href="photo-tagger.html"><span class="pl">Next →</span><span class="pt">Photo Tagger</span></a>
 </nav>
 </main>
-<footer><div><a href="../">← Portfolio top</a></div><div>Vol. 01 / Made in Nagasaki</div></footer>
+<footer class="f-foot" data-ach-end><a href="../">▶ タイトル画面へ戻る</a><br>© 2026 Inoue Hinata · Made in Nagasaki</footer>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/fun.js" defer></script>
 </body>
 </html>

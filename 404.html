@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-page-404>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Game Over — Inoue Hinata</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0E1116;--ink:#E6EDF3;--dim:#9aa4b0;--accent:#8fb0d4}
 *{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",monospace;text-align:center;padding:24px}
-.code{font-size:12px;letter-spacing:0.3em;color:var(--dim);margin-bottom:18px}
-h1{font-family:"Playfair Display","Noto Serif JP",serif;font-weight:400;font-style:italic;font-size:clamp(56px,12vw,120px);line-height:1;letter-spacing:-0.02em}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);font-family:"M PLUS 1p",sans-serif;text-align:center;padding:24px}
+.code{font-family:"Press Start 2P",monospace;font-size:12px;line-height:1.8;letter-spacing:0.3em;color:var(--dim);margin-bottom:18px}
+h1{font-family:"Press Start 2P",monospace;font-weight:400;font-size:clamp(32px,9vw,88px);text-shadow:.06em .06em 0 #6A2D57;line-height:1;letter-spacing:-0.02em}
 .msg{margin:22px 0 40px;font-size:14px;color:var(--dim);line-height:1.9}
 .continue{font-size:14px;letter-spacing:0.25em}
-.count{display:block;font-family:"Playfair Display",serif;font-size:56px;letter-spacing:0;margin:8px 0 20px;color:var(--accent)}
+.count{display:block;font-family:"Press Start 2P",monospace;font-size:56px;letter-spacing:0;margin:8px 0 20px;color:var(--accent)}
 .choices{display:flex;gap:28px;justify-content:center;font-size:16px;letter-spacing:0.15em}
 .choices a,.choices button{font:inherit;letter-spacing:inherit;color:var(--ink);background:none;border:none;border-bottom:1px solid transparent;padding:4px 2px;cursor:pointer}
 .choices a::before{content:"▶ ";content:"▶ " / "";color:var(--accent)}
 .choices a:hover,.choices button:hover{border-bottom-color:currentColor}
 :focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.ach-toasts{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.ach-toast{background:#E6EDF3;color:#0E1116;padding:10px 14px;border-left:4px solid #FFD93D;font-size:14px;transition:opacity .4s}
+.ach-toast-label,.ach-toast strong,.ach-toast-desc{display:block}
+.ach-toast-label{font-size:11px;letter-spacing:.12em}
+.ach-toast.out{opacity:0}
 .reply{min-height:1.8em;margin-top:22px;font-size:13px;color:var(--dim)}
 </style>
 </head>
@@ -57,5 +63,6 @@ h1{font-family:"Playfair Display","Noto Serif JP",serif;font-weight:400;font-sty
   }, 1000);
 })();
 </script>
+<script src="/assets/fun.js" defer></script>
 </body>
 </html>

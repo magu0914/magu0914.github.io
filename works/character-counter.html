@@ -11,23 +11,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23fafaf7%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%236b8caf%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%234a6a8c%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%232a2a2a%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="feature.css">
 </head>
 <body>
-<header><div class="head-inner"><div class="head-l" data-cvd-toggle></div><div class="head-c"><a href="../">Inoue Hinata</a></div><div class="head-r"><a href="../#works">← Works</a></div></div></header>
-<main>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../"><span aria-hidden="true" class="brand-mark"></span>Inoue Hinata</a><nav class="menu" aria-label="メニュー"><a href="../#works">Works</a><a href="../#contact">Contact</a></nav><div class="cvd-host" data-cvd-toggle></div></div></header>
+<main id="main">
 <article>
 <div class="f-head"><div class="wrap">
-<p class="kicker">Feature 04 / Works</p>
+<p class="kicker">STAGE 1-4 / STORY</p>
 <h1>Character Counter <span class="ital">— 文字カウント拡張</span></h1>
 <p class="dek">選択したテキストの文字数を、その場に表示する Chrome / Edge 拡張機能。</p>
 <dl class="facts"><div><dt>Tech</dt><dd>Chrome 拡張 (Manifest V3) / JavaScript</dd></div><div><dt>Permission</dt><dd><code>storage</code> のみ・外部通信なし</dd></div><div><dt>Source</dt><dd><a href="https://github.com/magu0914/character-counter">GitHub</a></dd></div></dl>
 </div></div>
-<section class="wrap f-sec"><div class="f-no">01 / Why</div><div><h2>きっかけ</h2>
+<section class="wrap f-sec"><div class="f-no">01 WHY</div><div class="f-body"><h2>きっかけ</h2>
 <p>レポートや感想文には「◯◯字以上」の指定があります。確かめるたびに文字カウントのサイトを開いて、コピーして、貼り付けて……という <strong>2〜3手間が地味に面倒</strong> でした。</p><p class="pull">選んだら、そこに数字が出ればいい。</p>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">02 / Process</div><div><h2>作るまでの <span class="ital">流れ</span></h2>
+<section class="wrap f-sec"><div class="f-no">02 PROCESS</div><div class="f-body"><h2>作るまでの <span class="ital">流れ</span></h2>
 <ol class="timeline">
 <li><span class="when">Step 1</span><span class="what">選択したら文字数をバッジで出す</span><span class="why">最初はマウスを離したとき（mouseup）に数えていた。</span></li>
 <li class="key"><span class="when">壁</span><span class="what">サイトによって反応しない / キーボード選択で反応しない</span><span class="why">サイト側がイベントの伝わりを止めていると mouseup が届かない。</span></li>
@@ -36,10 +38,10 @@
 <li><span class="when">Step 4</span><span class="what">貼り付けて数えるポップアップを追加</span><span class="why">全文字数・行数・原稿用紙換算（400字詰）も。</span></li>
 </ol>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">03 / Design</div><div><h2>工夫したこと</h2>
+<section class="wrap f-sec"><div class="f-no">03 DESIGN</div><div class="f-body"><h2>工夫したこと</h2>
 <ul class="dots"><li><strong>数え方を「提出する文字数」に合わせる。</strong> 半角・全角スペース、タブ、改行を除いて数える。</li><li><strong>絵文字も1文字。</strong> <code>[...text]</code> でコードポイント単位に数えるので、絵文字が2文字にならない。</li><li><strong>入れた文章は外に出さない。</strong> 権限は <code>storage</code> だけ。通信は一切しない。</li></ul>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">04 / Fixes</div><div><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
+<section class="wrap f-sec"><div class="f-no">04 FIXES</div><div class="f-body"><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
 <div class="fixes">
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>サイトやキーボード操作によっては反応しない</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span><code>selectionchange</code> を主なきっかけにする</div></div>
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>選択を広げている途中に、数字が何度も書き換わる</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>120ms のデバウンスで、選び終わってから表示</div></div>
@@ -47,7 +49,7 @@
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>埋め込みフォーム（iframe）の中では使えない</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span><code>all_frames</code> と <code>match_origin_as_fallback</code> を指定</div></div>
 </div>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">05 / Next</div><div><h2>次にやること</h2>
+<section class="wrap f-sec"><div class="f-no">05 NEXT</div><div class="f-body"><h2>次にやること</h2>
 <p>Chrome ウェブストアでの公開に向けて、ストア掲載用の説明とスクリーンショットを用意します。</p>
 </div></section>
 
@@ -57,7 +59,8 @@
 <a class="next" href="breakout.html"><span class="pl">Next →</span><span class="pt">Breakout</span></a>
 </nav>
 </main>
-<footer><div><a href="../">← Portfolio top</a></div><div>Vol. 01 / Made in Nagasaki</div></footer>
+<footer class="f-foot" data-ach-end><a href="../">▶ タイトル画面へ戻る</a><br>© 2026 Inoue Hinata · Made in Nagasaki</footer>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/fun.js" defer></script>
 </body>
 </html>

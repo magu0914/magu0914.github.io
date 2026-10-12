@@ -11,23 +11,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23fafaf7%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%236b8caf%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%234a6a8c%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%232a2a2a%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="feature.css">
 </head>
 <body>
-<header><div class="head-inner"><div class="head-l" data-cvd-toggle></div><div class="head-c"><a href="../">Inoue Hinata</a></div><div class="head-r"><a href="../#works">← Works</a></div></div></header>
-<main>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../"><span aria-hidden="true" class="brand-mark"></span>Inoue Hinata</a><nav class="menu" aria-label="メニュー"><a href="../#works">Works</a><a href="../#contact">Contact</a></nav><div class="cvd-host" data-cvd-toggle></div></div></header>
+<main id="main">
 <article>
 <div class="f-head"><div class="wrap">
-<p class="kicker">Feature 02 / Works</p>
+<p class="kicker">STAGE 1-2 / STORY</p>
 <h1>Photo <span class="ital">Tagger</span></h1>
 <p class="dek">Google フォトに「タグ」を後付けして、数千枚の中から目的の1枚にすぐたどり着けるようにするツール。</p>
 <dl class="facts"><div><dt>Period</dt><dd>2026.05 初版 → 07 改善</dd></div><div><dt>Tech</dt><dd>Chrome 拡張 (MV3) / PWA / OAuth 2.0 / Google Drive API</dd></div><div><dt>Source</dt><dd><a href="https://github.com/magu0914/photo-tagger">GitHub</a></dd></div></dl>
 </div></div>
-<section class="wrap f-sec"><div class="f-no">01 / Why</div><div><h2>きっかけ</h2>
+<section class="wrap f-sec"><div class="f-no">01 WHY</div><div class="f-body"><h2>きっかけ</h2>
 <p>Google フォトには写真が数千枚単位でたまっていきます。AI 検索は便利ですが曖昧で、アルバムで整理するのも続きません。<strong>「あの写真」に毎回たどり着けない</strong> のが不便でした。</p><p class="pull">自分で決めた言葉で、確実に見つけたい。</p><p>そこで、だれでも使い慣れている「タグ」を Google フォトに後付けすることにしました。</p>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">02 / Process</div><div><h2>作るまでの <span class="ital">流れ</span></h2>
+<section class="wrap f-sec"><div class="f-no">02 PROCESS</div><div class="f-body"><h2>作るまでの <span class="ital">流れ</span></h2>
 <ol class="timeline">
 <li><span class="when">設計</span><span class="what">PC とスマホで役割を分ける</span><span class="why">タグ付けは画面の広い PC（Chrome 拡張）、探すのはスマホ（PWA）。</span></li>
 <li class="key"><span class="when">設計</span><span class="what">サーバーを持たない</span><span class="why">タグは各ユーザーの Google Drive の隠し領域 <code>appDataFolder</code> に保存。運用コストもゼロ。</span></li>
@@ -37,10 +39,10 @@
 <li class="key"><span class="when">2026.07</span><span class="what">毎日使ってみて出た不満を一気に直す</span><span class="why">2日間で 12 コミット。下の「嫌だったこと」はほとんどこの時期のもの。</span></li>
 </ol>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">03 / Design</div><div><h2>工夫したこと</h2>
+<section class="wrap f-sec"><div class="f-no">03 DESIGN</div><div class="f-body"><h2>工夫したこと</h2>
 <ul class="dots"><li><strong>写真の同一性。</strong> API の制約の中で、Web 側の写真 ID（<code>AF1Qip</code> で始まる44文字）を主キーにし、撮影日時を補助に使う設計にした。</li><li><strong>スマホは読むだけ。</strong> スマホ側は Drive のデータを読むだけで動くので、写真本体を転送しない。</li><li><strong>OAuth の審査が要らない範囲だけ使う。</strong> 機密扱いではないスコープだけで完結させ、だれでもすぐ使えるようにした。</li></ul>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">04 / Fixes</div><div><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
+<section class="wrap f-sec"><div class="f-no">04 FIXES</div><div class="f-body"><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
 <div class="fixes">
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>PWA を更新しても、古い画面のまま</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>Service Worker をネットワーク優先に変更</div></div>
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>タグを付けたはずが、保存されていないことがある</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>Service Worker が止まる前に保存を完了させるよう修正</div></div>
@@ -51,7 +53,7 @@
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>ページ移動のタイミングでタグ欄が別の写真のものになる</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>遅延処理の実行時に最新の URL を見直すよう修正（SPA 遷移と MutationObserver の競合）</div></div>
 </div>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">05 / Next</div><div><h2>次にやること</h2>
+<section class="wrap f-sec"><div class="f-no">05 NEXT</div><div class="f-body"><h2>次にやること</h2>
 <p>README のデモ欄にスクリーンショットと短い動画を載せて、インストールしなくても使い心地が伝わるようにします。</p>
 </div></section>
 
@@ -61,7 +63,8 @@
 <a class="next" href="senryu-bot.html"><span class="pl">Next →</span><span class="pt">Senryu Bot</span></a>
 </nav>
 </main>
-<footer><div><a href="../">← Portfolio top</a></div><div>Vol. 01 / Made in Nagasaki</div></footer>
+<footer class="f-foot" data-ach-end><a href="../">▶ タイトル画面へ戻る</a><br>© 2026 Inoue Hinata · Made in Nagasaki</footer>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/fun.js" defer></script>
 </body>
 </html>

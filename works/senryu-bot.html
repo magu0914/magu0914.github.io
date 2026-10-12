@@ -11,23 +11,25 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23fafaf7%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%236b8caf%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%234a6a8c%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%232a2a2a%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="feature.css">
 </head>
 <body>
-<header><div class="head-inner"><div class="head-l" data-cvd-toggle></div><div class="head-c"><a href="../">Inoue Hinata</a></div><div class="head-r"><a href="../#works">← Works</a></div></div></header>
-<main>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../"><span aria-hidden="true" class="brand-mark"></span>Inoue Hinata</a><nav class="menu" aria-label="メニュー"><a href="../#works">Works</a><a href="../#contact">Contact</a></nav><div class="cvd-host" data-cvd-toggle></div></div></header>
+<main id="main">
 <article>
 <div class="f-head"><div class="wrap">
-<p class="kicker">Feature 03 / Works</p>
+<p class="kicker">STAGE 1-3 / STORY</p>
 <h1>Senryu <span class="ital">Bot</span></h1>
 <p class="dek">Discord の何気ない会話に紛れ込んだ「5・7・5」を見つけて、川柳として拾い上げる Bot。</p>
 <dl class="facts"><div><dt>Tech</dt><dd>Go / discordgo / kagome (形態素解析) / SQLite</dd></div><div><dt>Run</dt><dd>Windows / Docker</dd></div><div><dt>Source</dt><dd><a href="https://github.com/magu0914/senryu-bot">GitHub</a></dd></div></dl>
 </div></div>
-<section class="wrap f-sec"><div class="f-no">01 / Why</div><div><h2>きっかけ</h2>
+<section class="wrap f-sec"><div class="f-no">01 WHY</div><div class="f-body"><h2>きっかけ</h2>
 <p>チャットをしていると、たまたま5・7・5になっている発言があります。だれも気づかずに流れていくそれを、Bot が拾って「川柳です」と返してくれたら、会話が少し楽しくなるはず。</p><div class="moras" role="img" aria-label="朝起きて（5音）、昼めし食べて（7音）、夜眠る（5音）"><div class="mora"><small>5</small>朝起きて</div><div class="mora"><small>7</small>昼めし食べて</div><div class="mora"><small>5</small>夜眠る</div></div><p>ただし、<strong>変なところで切った「川柳もどき」を拾うと一気に冷めます。</strong> この Bot はほとんど「誤検出との戦い」でした。</p>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">02 / Process</div><div><h2>作るまでの <span class="ital">流れ</span></h2>
+<section class="wrap f-sec"><div class="f-no">02 PROCESS</div><div class="f-body"><h2>作るまでの <span class="ital">流れ</span></h2>
 <ol class="timeline">
 <li><span class="when">Step 1</span><span class="what">形態素解析で読みを取り、5/7/5 になる区切りを探す</span></li>
 <li><span class="when">Step 2</span><span class="what">おかしな検出を後から弾くルールを足していく</span><span class="why">誤検出が出るたびにルールを1つ足す…を繰り返した。</span></li>
@@ -37,10 +39,10 @@
 <li><span class="when">Step 4</span><span class="what">遊び方を増やす</span><span class="why">今日の一句・日次サマリー・月間MVP・詠み人当てクイズ・ランキング。</span></li>
 </ol>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">03 / Design</div><div><h2>工夫したこと</h2>
+<section class="wrap f-sec"><div class="f-no">03 DESIGN</div><div class="f-body"><h2>工夫したこと</h2>
 <ul class="dots"><li><strong>文節の境界を厳密に。</strong> 自立語の手前だけを区切り候補にし、名詞の連続は複合名詞としてつなげる。「バーキン」が「バー / キン」で割れない。</li><li><strong>句の切れ目は文節の境界だけ。</strong> 4つの境界を選んで 5/7/5 モーラぴったりになる組を探すので、単語の途中で切れることが構造的に起きない。</li><li><strong>文の途中から始めない。</strong> 上五の開始位置を制限し、文中に埋もれた断片の切り出しを防ぐ。</li><li><strong>言いかけで終わらせない。</strong> 「は・も・て・で・と・って」で終わる下五を弾く。「美味しいと（思います）」を拾わない。</li><li><strong>読めない漢字は補う。</strong> 辞書で読みが取れない語は補助辞書で補完。</li></ul><p>Go の SQLite には純 Go 実装を使い、CGO なしでビルドできるようにしています。</p>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">04 / Fixes</div><div><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
+<section class="wrap f-sec"><div class="f-no">04 FIXES</div><div class="f-body"><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
 <div class="fixes">
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>単語の途中で切った「川柳もどき」を拾う</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>複合名詞や接頭・接尾辞をつなげて文節を計算</div></div>
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>文の真ん中だけを切り出して川柳にしてしまう</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>上五の開始位置を制限</div></div>
@@ -49,7 +51,7 @@
 <div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>検出が多すぎてうるさいと感じる人もいる</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span><code>/detect off</code> で自分だけ、<code>/mute</code> でチャンネルごと止められるように</div></div>
 </div>
 </div></section>
-<section class="wrap f-sec"><div class="f-no">05 / Next</div><div><h2>次にやること</h2>
+<section class="wrap f-sec"><div class="f-no">05 NEXT</div><div class="f-body"><h2>次にやること</h2>
 <p>集めた誤検出ケースを自動テストにして、ルールを変えたときに前のケースが壊れていないかすぐ確かめられるようにします。</p>
 </div></section>
 
@@ -59,7 +61,8 @@
 <a class="next" href="character-counter.html"><span class="pl">Next →</span><span class="pt">Character Counter</span></a>
 </nav>
 </main>
-<footer><div><a href="../">← Portfolio top</a></div><div>Vol. 01 / Made in Nagasaki</div></footer>
+<footer class="f-foot" data-ach-end><a href="../">▶ タイトル画面へ戻る</a><br>© 2026 Inoue Hinata · Made in Nagasaki</footer>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/fun.js" defer></script>
 </body>
 </html>
