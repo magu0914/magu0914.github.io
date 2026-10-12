@@ -24,7 +24,8 @@
     off.width = W; off.height = H;
     var ctx = off.getContext('2d', { willReadFrequently: true });
     var fontPx = parseFloat(getComputedStyle(title).fontSize);
-    var cell = Math.max(5, Math.round(fontPx / 15));
+    /* ブロックを大きめにして数を抑える（細かすぎると崩しきるのに時間がかかる） */
+    var cell = Math.max(6, Math.round(fontPx / 9));
 
     var walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
     var range = document.createRange();
@@ -77,15 +78,19 @@
   var ITEMS = {
     WIDE:   { label: 'W', name: 'WIDE',   color: '#4ECDC4', secs: 10 },
     MULTI:  { label: 'M', name: 'MULTI',  color: '#95E07A', secs: 0 },
-    PIERCE: { label: 'P', name: 'PIERCE', color: '#FFD93D', secs: 6 },
+    PIERCE: { label: 'P', name: 'PIERCE', color: '#FFD93D', secs: 8 },
     SLOW:   { label: 'S', name: 'SLOW',   color: '#5DA9FF', secs: 8 },
     BOMB:   { label: 'B', name: 'BOMB',   color: '#FF7AB6', secs: 0 }
   };
   /* 重み付き抽選の枠。強いものほど少なく */
-  var ITEM_POOL = ['WIDE', 'WIDE', 'WIDE', 'MULTI', 'MULTI', 'MULTI', 'PIERCE', 'PIERCE', 'SLOW', 'SLOW', 'BOMB'];
-  var DROP_CHANCE = 0.035;
-  var MAX_FALLING = 2;
-  var MAX_BALLS = 6;
+  var ITEM_POOL = ['WIDE', 'WIDE', 'MULTI', 'MULTI', 'MULTI', 'PIERCE', 'PIERCE', 'SLOW', 'BOMB', 'BOMB'];
+  var DROP_CHANCE = 0.06;
+  var MAX_FALLING = 3;
+  var MAX_BALLS = 8;
+  /* 残りがこの割合を切ったら LAST SPURT（常に貫通＋加速） */
+  var SPURT_RATIO = 0.3;
+  /* 残りがこの数以下になったら、パドルで打ち返したボールが一番近いブロックへ向かう */
+  var AIM_LEFT = 30;
 
   function TitleGame() {
     var self = this;
@@ -101,6 +106,7 @@
     this.map = built.map;
     this.cell = built.cell;
     this.left = this.blocks.length;
+    this.total = this.blocks.length;
     this.score = 0;
     this.miss = 0;
     this.W = W; this.H = H;
@@ -170,16 +176,18 @@
   };
 
   TitleGame.prototype.curSpeed = function () {
-    return this.speed * (this.fx.slow > 0 ? 0.6 : 1);
+    return this.speed * (this.fx.slow > 0 ? 0.6 : 1) * (this.spurt ? 1.25 : 1);
   };
 
   TitleGame.prototype.launch = function () {
     var b = this.balls[0];
     if (!b || !b.stuck || this.cleared) return;
-    var a = (-Math.PI / 2) + (Math.random() - 0.5) * 0.8;
-    b.vx = Math.cos(a) * this.curSpeed();
-    b.vy = Math.sin(a) * this.curSpeed();
-    b.stuck = false;
+    /* 発射は3球を扇状に。1球だと序盤がなかなか進まないので */
+    var base = (-Math.PI / 2) + (Math.random() - 0.5) * 0.4;
+    var s = this.curSpeed();
+    this.balls = [-0.45, 0, 0.45].map(function (da) {
+      return { x: b.x, y: b.y, vx: Math.cos(base + da) * s, vy: Math.sin(base + da) * s, stuck: false };
+    });
   };
 
   TitleGame.prototype.update = function (dt) {
@@ -241,6 +249,9 @@
         /* 当たった位置で跳ね返る角度を変える */
         var off = Math.max(-1, Math.min(1, (b.x - p.x) / (p.w / 2)));
         var ang = -Math.PI / 2 + off * 1.05;
+        /* 残りわずかになったら、一番近いブロックへ向けて打ち返す（取り残しを探し回らなくて済むように） */
+        var aim = this.aimAt(b);
+        if (aim !== null) ang = aim;
         var spd = this.curSpeed();
         b.vx = Math.cos(ang) * spd;
         b.vy = Math.sin(ang) * spd;
@@ -258,6 +269,10 @@
     blk.fade = 0.25;
     this.left--;
     this.score += 10;
+    if (!this.spurt && this.left <= this.total * SPURT_RATIO) {
+      this.spurt = true;
+      this.pops.push({ text: 'LAST SPURT!', x: this.W / 2, y: this.H / 2, life: 1.4, color: ITEMS.PIERCE.color });
+    }
     if (this.items.length < MAX_FALLING && Math.random() < DROP_CHANCE) {
       var type = ITEM_POOL[Math.floor(Math.random() * ITEM_POOL.length)];
       this.items.push({ type: type, x: blk.x + this.cell / 2, y: blk.y + this.cell / 2 });
@@ -276,7 +291,7 @@
         if (this.fx.bomb > 0) { this.fx.bomb--; this.explode(gx, gy); }
         if (this.left <= 0) { this.clear(); return true; }
         /* 貫通中は跳ね返らずに進み続ける */
-        if (this.fx.pierce > 0) continue;
+        if (this.fx.pierce > 0 || this.spurt) continue;
         /* 直前の位置がブロックの横範囲の外なら横から当たったとみなす */
         var fromSide = px + this.r <= blk.x || px - this.r >= blk.x + c;
         if (fromSide) b.vx = -b.vx; else b.vy = -b.vy;
@@ -287,9 +302,25 @@
     return false;
   };
 
+  TitleGame.prototype.aimAt = function (b) {
+    if (this.left > AIM_LEFT) return null;
+    var best = null, bestD = Infinity, c = this.cell;
+    for (var i = 0; i < this.blocks.length; i++) {
+      var blk = this.blocks[i];
+      if (!blk.alive) continue;
+      var dx = blk.x + c / 2 - b.x, dy = blk.y + c / 2 - b.y;
+      var d = dx * dx + dy * dy;
+      if (d < bestD) { bestD = d; best = { dx: dx, dy: dy }; }
+    }
+    if (!best) return null;
+    var a = Math.atan2(best.dy, best.dx);
+    /* 真横や下向きにはしない */
+    return Math.max(-Math.PI + 0.25, Math.min(-0.25, a));
+  };
+
   /* BOMB: 当たった場所のまわりをまとめて壊す */
   TitleGame.prototype.explode = function (cx, cy) {
-    var R = 4;
+    var R = 6;
     for (var gy = cy - R; gy <= cy + R; gy++) {
       for (var gx = cx - R; gx <= cx + R; gx++) {
         if ((gx - cx) * (gx - cx) + (gy - cy) * (gy - cy) > R * R) continue;
@@ -388,7 +419,7 @@
     ctx.fillStyle = this.fx.wide > 0 ? ITEMS.WIDE.color : ink;
     ctx.fillRect(p.x - p.w / 2, p.y, p.w, p.h);
 
-    var ballColor = this.fx.pierce > 0 ? ITEMS.PIERCE.color : (cssVar('--accent-ink') || '#4a6a8c');
+    var ballColor = (this.fx.pierce > 0 || this.spurt) ? ITEMS.PIERCE.color : (cssVar('--accent-ink') || '#4a6a8c');
     for (var n = 0; n < this.balls.length; n++) {
       var b = this.balls[n];
       ctx.fillStyle = ballColor;
@@ -404,7 +435,7 @@
       }
     }
 
-    ctx.font = 'bold 13px "JetBrains Mono", ui-monospace, monospace';
+    ctx.font = 'bold 14px "JetBrains Mono", ui-monospace, monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     for (var q = 0; q < this.pops.length; q++) {
@@ -422,6 +453,7 @@
     if (this.fx.slow > 0) active.push('SLOW ' + Math.ceil(this.fx.slow) + 's');
     if (this.fx.bomb > 0) active.push('BOMB x' + this.fx.bomb);
     if (this.balls.length > 1) active.push('BALL x' + this.balls.length);
+    if (this.spurt) active.push('LAST SPURT');
     ctx.fillStyle = ink;
     ctx.font = '12px "JetBrains Mono", ui-monospace, monospace';
     ctx.textBaseline = 'top';
