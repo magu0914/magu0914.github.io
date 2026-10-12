@@ -151,6 +151,50 @@
     el.hidden = false;
   }
 
+  /* ---------- 作品のプレイ動画 ----------
+     音なし・ループ。画面に入ったときだけ再生し、外れたら止める。
+     動きを減らす設定の人には自動再生せず、▶ を押したときだけ再生する */
+  function setupDemos() {
+    var vids = document.querySelectorAll('video[data-demo]');
+    if (!vids.length) return;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting && !v.dataset.userPaused && !reduce) play(v);
+        else if (!en.isIntersecting) v.pause();
+      });
+    }, { threshold: 0.4 }) : null;
+
+    function sync(v) {
+      var btn = v.parentNode.querySelector('.demo-btn');
+      if (!btn) return;
+      var playing = !v.paused;
+      btn.setAttribute('aria-pressed', String(!playing));
+      btn.textContent = playing ? '❚❚ 一時停止' : '▶ 再生';
+    }
+    function play(v) {
+      var pr = v.play();
+      if (pr && pr.catch) pr.catch(function () { sync(v); });
+    }
+
+    Array.prototype.forEach.call(vids, function (v) {
+      v.muted = true;
+      var btn = v.parentNode.querySelector('.demo-btn');
+      if (btn) {
+        btn.hidden = false;
+        btn.addEventListener('click', function () {
+          if (v.paused) { delete v.dataset.userPaused; play(v); }
+          else { v.dataset.userPaused = '1'; v.pause(); }
+        });
+      }
+      v.addEventListener('play', function () { sync(v); });
+      v.addEventListener('pause', function () { sync(v); });
+      sync(v);
+      if (io) io.observe(v);
+    });
+  }
+
   /* ---------- 開発者ツールを開いた人へ ---------- */
   function greet() {
     if (!window.console || !console.log) return;
@@ -166,6 +210,7 @@
     setupToggle();
     setupCompare();
     setupHighScore();
+    setupDemos();
     greet();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
