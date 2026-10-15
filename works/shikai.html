@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>視界 — Inoue Hinata</title>
+<meta name="description" content="画面全体が1型色覚のシミュレーションで描かれた世界を、色の代わりに数字で推理して進むパズルゲーム。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="視界 — Inoue Hinata">
+<meta property="og:description" content="画面全体が1型色覚のシミュレーションで描かれた世界を、色の代わりに数字で推理して進むパズルゲーム。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23fafaf7%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%236b8caf%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%234a6a8c%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%232a2a2a%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261016a">
+<link rel="stylesheet" href="feature.css?v=20261016a">
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../"><span aria-hidden="true" class="brand-mark"></span>Inoue Hinata</a><nav class="menu" aria-label="メニュー"><a href="../#works">Works</a><a href="../#contact">Contact</a></nav><div class="cvd-host" data-cvd-toggle></div></div></header>
+<main id="main">
+<article>
+<div class="f-head"><div class="wrap">
+<p class="kicker">STAGE 1-1 / STORY</p>
+<h1>視界 <span class="ital">— 赤と緑が、同じに見える世界</span></h1>
+<p class="dek">画面全体が1型色覚のシミュレーションで描かれた世界を、色の代わりに数字で推理して進むパズルゲーム。</p>
+<dl class="facts"><div><dt>Play</dt><dd><a href="../shikai/">ブラウザで遊ぶ</a></dd></div><div><dt>Tech</dt><dd>Unity 6 / URP / HLSL / C# / WebGL</dd></div><div><dt>Period</dt><dd>2026.09 – 10（v1 → v5 まで4回作り直し）</dd></div></dl>
+</div></div>
+<section class="wrap f-sec"><div class="f-no">01 WHY</div><div class="f-body"><h2>きっかけ</h2>
+<p>修士研究で、色覚特性のある人のためのリアルタイム画面補正を作っています。作者自身も1型色覚です。その補正技術を、ゲームの仕掛けとして使えないかと考えたのが始まりでした。</p><p class="pull">色覚のゲームを、色覚の体験そのもので作りたかった。</p><p>1型色覚の人にとって、赤と緑は「見えない」のではなく「見えているのに区別がつかない」ものです。そして日常では、信号の色を位置で判断するように、<strong>色以外の手がかりで色を推理して</strong>暮らしています。このゲームは、その推理を遊びにしました。</p><p>画面全体に P型シミュレーションがかかっているので、<strong>一般色覚の人も円の外では赤と緑を区別できません。</strong>全員が作者と同じ条件から始まります。</p>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">02 PROCESS</div><div class="f-body"><h2>作るまでの <span class="ital">流れ</span></h2>
+<ol class="timeline">
+<li><span class="when">v1 – v3</span><span class="what">2つの視界を Tab で切り替えるゲーム</span><span class="why">切り替えが無料・無制限なので、とりあえず両方見るだけになり、判断が生まれず作業になった。</span></li>
+<li class="key"><span class="when">壁</span><span class="what">作者自身がプレイできなかった</span><span class="why">難しさの源が「赤と緑を見分けられないこと」だったため、1型色覚の作者には遊べないゲームになっていた。</span></li>
+<li class="key"><span class="when">2026.10.10</span><span class="what">v4: 補正を「円」にする</span><span class="why">自分のまわりの円の中だけ補正をかける。円の外は全員が同じ条件になり、作者も遊べる構造になった。</span></li>
+<li><span class="when">壁</span><span class="what">遊んでも「単純な作業」に感じる</span><span class="why">円がいつも隣のマスを見せてくれるので、見えている緑を踏むだけになっていた。</span></li>
+<li class="key"><span class="when">2026.10.14</span><span class="what">v5: 色を推理するゲームに作り替える</span><span class="why">円は立ち止まったときだけ開くようにし、進む手がかりを「踏んだ床の数字」にした。毎歩「推理して進むか、止まって確かめるか」を選ぶゲームになった。</span></li>
+<li><span class="when">2026.10.16</span><span class="what">v5.1 – 5.2: 既存ゲームから4つの要素を借りる</span><span class="why">マインスイーパーの 0 の連鎖、ColorADD の記号ラベル、Neon White の★評価、Wordle の今日の一問。</span></li>
+</ol>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">03 DESIGN</div><div class="f-body"><h2>工夫したこと</h2>
+<ul class="dots"><li><strong>色覚フィルタをシェーダーで。</strong> 画面全体に Machado ら（2009）の1型色覚シミュレーション行列をかけ、円の内側だけ Daltonize で補正する。URP の Full Screen Pass Renderer Feature から呼んでいる。</li><li><strong>カラースペースの二重変換を避ける。</strong> 研究の Python 版では sRGB を自分で線形化する必要があった（忘れて一度バグらせた）。一方 Unity の Linear カラースペースでは、シェーダーに届く時点で既に線形。同じ変換を入れると二重になるので、<code>QualitySettings.activeColorSpace</code> から経路を自動で選ぶようにした。</li><li><strong>色は目ではなく数値で確かめる。</strong> 作者は画面の変化を目で判定できないので、フレームバッファの画素値を測る診断を作った。補正が「効いていない気がする」の正体は、3週間一度も動いていなかったポストエフェクトだった。</li><li><strong>装飾が仕掛けを壊さないように。</strong> 床の陰影やハイライトは色味のない明るさの変化だけにした。シミュレーションは線形変換なので、赤と緑に同じ明暗をかければ、変換後も同じ色のままになる。</li><li><strong>運で死なせない。</strong> 推理だけでどこまで進めるかを <code>Tools/deduce.py</code> でシミュレーションし、ステージを選んでいる。今日の一問も、ゲームの中で解けることを確かめてから出す。</li></ul>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">04 FIXES</div><div class="f-body"><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
+<div class="fixes">
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>作者自身（1型色覚）がプレイできなかった</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>補正を自分のまわりの「円」にして、円の外は全員が同じ条件になるようにした</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>円の外でも、一般色覚の人には赤と緑がわずかに見分けられた（作者には見えないので、画素値を測って初めて気づいた）</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>テンプレートのトーンマッピングを切り、赤と緑の差が約1階調（色差 ΔE 0.3）に戻ったことを実測した</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>考えている間に円が開いて「確かめた」に数えられ、1歩ごとに止まるのが一番安全な遊び方になっていた</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>新しく分かった床が見えたときだけ数え、円が開き始めるまで1秒待つ。暗闇の速さはシミュレーションで調整</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>ミスするとその場で盤面が組み直されて、どこで死んだのか分からない</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>死んだマスに白い「×」を1秒弱残す。赤という色に頼らず、形で伝える</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>「本当にやり直しますか？」の確認が煩わしい</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>確認を出さない。R キー一発、ロードなしで即座に開始位置へ</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>ブラウザ版では日本語が表示されなかった（OS のフォントが使えない）</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>実際に使う249字だけを抜き出したフォントを同梱（約9MB → 127KB）</div></div>
+</div>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">05 NEXT</div><div class="f-body"><h2>次にやること</h2>
+<p>作者は1型色覚なので、「円の外で赤と緑が本当に区別できないか」を自分の目では確かめられません。<strong>一般色覚の人によるプレイテスト</strong>が次の課題です。あわせて、ステージ数（現在6面）と、円の大きさや縮む速さの手触りを詰めていきます。</p>
+</div></section>
+
+</article>
+<nav class="wrap pager" aria-label="ほかの作品">
+<a href="character-counter.html"><span class="pl">← Prev</span><span class="pt">Character Counter</span></a>
+<a class="next" href="breakout.html"><span class="pl">Next →</span><span class="pt">Breakout</span></a>
+</nav>
+</main>
+<footer class="f-foot" data-ach-end><a href="../">▶ タイトル画面へ戻る</a><br>© 2026 Inoue Hinata · Made in Nagasaki</footer>
+<script src="../assets/site.js?v=20261016a" defer></script>
+<script src="../assets/fun.js?v=20261016a" defer></script>
+<script src="../assets/debug.js?v=20261016a" defer></script>
+</body>
+</html>

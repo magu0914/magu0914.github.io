@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261013j">
+<link rel="stylesheet" href="assets/style.css?v=20261016a">
 </head>
 <body>
 <a class="skip" href="#about">本文へスキップ</a>
@@ -178,7 +178,7 @@
           <span class="stat-name">Unity (C#)</span>
           <span class="stat-lv"><abbr title="レベル">LV</abbr> <b>2</b><span class="max">/10</span></span>
           <span class="gauge" style="--lv:2" aria-hidden="true"></span>
-          <span class="stat-desc">修行中。色覚パズル「視界」を制作中</span>
+          <span class="stat-desc">修行中。色覚パズル「視界」を公開（色覚フィルタのシェーダーは自作）</span>
         </li>
       </ol>
     </div>
@@ -195,8 +195,18 @@
 
     <h3 class="world">WORLD 1 <span>— 公開中の作品</span></h3>
     <div class="stages">
+      <article class="stage stage-new">
+        <div class="stage-head"><span class="stage-no">1-1</span><span class="stage-state">NEW <span aria-hidden="true">★</span><span class="sr-only">（新しく公開）</span></span></div>
+        <div class="stage-vis has-demo shot"><img src="assets/works/shikai.jpg" width="621" height="320" loading="lazy" alt="視界のプレイ画面。黄土色の床が並ぶ盤面で、プレイヤーのまわりの円の中だけ、緑の床に「○」、赤い床に「×」の印が見えている。円の外の床はすべて同じ色に見える"></div>
+        <h4 class="stage-name"><a href="works/shikai.html"><span class="jp-name">視界</span> <span class="ja">— Unity / C#</span></a></h4>
+        <p class="stage-line">赤と緑が同じに見える世界を、数字で推理して進むパズル。</p>
+        <p class="stage-desc">画面全体が1型色覚（P型）のシミュレーションで描かれた世界を歩くパズル。赤い床と緑の床が同じ色に見えるので、<strong>踏んだ床に出る数字（まわりの赤い床の数）で推理</strong>して進みます。立ち止まると、まわりだけ補正された色で違いが見えますが、背後からは暗闇が迫ってきます。色覚フィルタは修士研究と同じ Machado (2009) の行列を URP のシェーダーで実装し、Unity の Linear カラースペースで二重変換にならないよう入力の色空間を自動で切り替えています。</p>
+        <ul class="chips" aria-label="使用技術"><li>Unity 6</li><li>C#</li><li>URP</li><li>HLSL</li><li>WebGL</li></ul>
+        <div class="stage-links"><a href="works/shikai.html">Story</a><a href="shikai/">Play</a></div>
+      </article>
+
       <article class="stage">
-        <div class="stage-head"><span class="stage-no">1-1</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-head"><span class="stage-no">1-2</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
         <div class="stage-vis has-demo"><video data-demo muted loop playsinline preload="none" poster="assets/works/breakout.jpg" aria-label="Breakout のプレイ画面。音なしの12秒ループで、ボールがブロックを崩し、WIDE や PIERCE のアイテムを取っている"><source src="assets/works/breakout.webm" type="video/webm"><source src="assets/works/breakout.mp4" type="video/mp4"></video><button type="button" class="demo-btn" aria-pressed="false" hidden>▶ 再生</button></div>
         <h4 class="stage-name"><a href="works/breakout.html">BREAKOUT <span class="ja">— ブロック崩し</span></a></h4>
         <p class="stage-line">p5.js 製、HTML 1枚で動くブロック崩し。</p>
@@ -207,7 +217,7 @@
       </article>
 
       <article class="stage">
-        <div class="stage-head"><span class="stage-no">1-2</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-head"><span class="stage-no">1-3</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
         <div class="stage-vis sv2" aria-hidden="true"><span>PT</span></div>
         <h4 class="stage-name"><a href="works/photo-tagger.html">PHOTO TAGGER</a></h4>
         <p class="stage-line">Google フォトに独自タグを付けて探すツール。</p>
@@ -217,7 +227,7 @@
       </article>
 
       <article class="stage">
-        <div class="stage-head"><span class="stage-no">1-3</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-head"><span class="stage-no">1-4</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
         <div class="stage-vis sv3" aria-hidden="true"><span>川</span></div>
         <h4 class="stage-name"><a href="works/senryu-bot.html">SENRYU BOT</a></h4>
         <p class="stage-line">会話に紛れた「5・7・5」を見つける Discord Bot。</p>
@@ -227,7 +237,7 @@
       </article>
 
       <article class="stage">
-        <div class="stage-head"><span class="stage-no">1-4</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
+        <div class="stage-head"><span class="stage-no">1-5</span><span class="stage-state">CLEAR <span aria-hidden="true">★</span><span class="sr-only">（公開済み）</span></span></div>
         <div class="stage-vis sv4" aria-hidden="true"><span>文</span></div>
         <h4 class="stage-name"><a href="works/character-counter.html">CHARACTER COUNTER <span class="ja">— 文字カウント拡張</span></a></h4>
         <p class="stage-line">選択したテキストの文字数をその場に出す拡張。</p>
@@ -239,16 +249,9 @@
 
     <h3 class="world">WORLD 2 <span>— COMING SOON / 開発中の作品</span></h3>
     <div class="stages stages-locked">
-      <article class="stage locked">
-        <div class="stage-head"><span class="stage-no">2-1</span><span class="stage-state"><span class="lock" aria-hidden="true"></span>LOCKED<span class="sr-only">（開発中）</span></span></div>
-        <h4 class="stage-name"><span class="jp-name">視界</span> <span class="ja">— Unity / C#</span></h4>
-        <p class="stage-line">色覚特性をテーマにしたパズルゲーム。</p>
-        <p class="stage-desc">色覚特性をテーマにしたパズルゲーム。研究で扱っている「人によって色の見え方が違う」ことを遊びの仕掛けにできないか試している。ブラウザ（WebGL）で遊べる形で公開予定（2026.10）。</p>
-        <p class="unlock">UNLOCK: 2026.10 予定</p>
-      </article>
 
       <article class="stage locked stage-wide">
-        <div class="stage-head"><span class="stage-no">2-2</span><span class="stage-state"><span class="lock" aria-hidden="true"></span>LOCKED<span class="sr-only">（開発中）</span></span></div>
+        <div class="stage-head"><span class="stage-no">2-1</span><span class="stage-state"><span class="lock" aria-hidden="true"></span>LOCKED<span class="sr-only">（開発中）</span></span></div>
         <h4 class="stage-name">WIZARD TRIAL（仮）<span class="ja">— 魔法学校バトルロワイヤル（Unity 6 / C#）</span></h4>
         <p class="stage-line copy">倒されても終わらない。前後半2部制の魔法学校バトロワ。</p>
         <div class="shots">
@@ -328,6 +331,16 @@
     </div>
     <div class="win patch">
       <article class="patch-ver">
+        <h3><span class="ver">Ver 2.2.0</span> <time datetime="2026-10-16">2026.10.16</time></h3>
+        <ul>
+          <li><span class="tag add">追加</span>Unity で作った色覚パズル「視界」を公開（ブラウザで遊べます）</li>
+          <li><span class="tag add">追加</span>視界の制作記事</li>
+          <li><span class="tag add">追加</span>Breakout のカードをプレイ動画に</li>
+        </ul>
+      </article>
+      <details class="patch-old">
+        <summary>以前の更新を見る</summary>
+      <article class="patch-ver">
         <h3><span class="ver">Ver 2.1.0</span> <time datetime="2026-10-13">2026.10.13</time></h3>
         <ul>
           <li><span class="tag add">追加</span>タイトルのブロック崩しにクリアタイムとベスト記録を追加</li>
@@ -337,8 +350,7 @@
           <li><span class="tag adj">調整</span>タイトルのブロック崩しを崩しやすく（ブロック数を約1/3、3球発射、LAST SPURT、残り30個で狙い撃ち）</li>
         </ul>
       </article>
-      <details class="patch-old">
-        <summary>以前の更新を見る</summary>
+
         <article class="patch-ver">
           <h3><span class="ver">Ver 2.0.0</span> <time datetime="2026-10-13">2026.10.13</time></h3>
           <ul>
@@ -393,9 +405,9 @@
   </div>
 </footer>
 
-<script src="assets/site.js?v=20261013j" defer></script>
-<script src="assets/fun.js?v=20261013j" defer></script>
-<script src="assets/title-breakout.js?v=20261013j" defer></script>
-<script src="assets/debug.js?v=20261013j" defer></script>
+<script src="assets/site.js?v=20261016a" defer></script>
+<script src="assets/fun.js?v=20261016a" defer></script>
+<script src="assets/title-breakout.js?v=20261016a" defer></script>
+<script src="assets/debug.js?v=20261016a" defer></script>
 </body>
 </html>
