@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDGEWISE — Inoue Hinata</title>
+<meta name="description" content="3×3 の盤にカードを置き、隣の相手より大きい辺で裏返して陣地を取り合う、ブラウザで遊べる対戦カードゲーム。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EDGEWISE — Inoue Hinata">
+<meta property="og:description" content="3×3 の盤にカードを置き、隣の相手より大きい辺で裏返して陣地を取り合う、ブラウザで遊べる対戦カードゲーム。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23fafaf7%22/%3E%3Crect x=%224%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Crect x=%2213%22 y=%225%22 width=%227%22 height=%225%22 fill=%22%236b8caf%22/%3E%3Crect x=%2222%22 y=%225%22 width=%226%22 height=%225%22 fill=%22%232a2a2a%22/%3E%3Ccircle cx=%2219%22 cy=%2219%22 r=%223%22 fill=%22%234a6a8c%22/%3E%3Crect x=%229%22 y=%2225%22 width=%2214%22 height=%223%22 fill=%22%232a2a2a%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261019a">
+<link rel="stylesheet" href="feature.css?v=20261019a">
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../"><span aria-hidden="true" class="brand-mark"></span>Inoue Hinata</a><nav class="menu" aria-label="メニュー"><a href="../#works">Works</a><a href="../#contact">Contact</a></nav><div class="cvd-host" data-cvd-toggle></div></div></header>
+<main id="main">
+<article>
+<div class="f-head"><div class="wrap">
+<p class="kicker">STAGE 1-2 / STORY</p>
+<h1>EDGEWISE <span class="ital">— 星図カードバトル</span></h1>
+<p class="dek">3×3 の盤にカードを置き、隣の相手より大きい辺で裏返して陣地を取り合う、ブラウザで遊べる対戦カードゲーム。</p>
+<dl class="facts"><div><dt>Play</dt><dd><a href="../edgewise/">GitHub Pages</a> / <a href="https://unityroom.com/games/edgewise">unityroom</a></dd></div><div><dt>Tech</dt><dd>Unity 6 / C# / NUnit / WebRTC</dd></div><div><dt>Source</dt><dd><a href="https://github.com/magu0914/edgewise">GitHub</a></dd></div><div><dt>Role</dt><dd>企画・仕様の判断・試遊・公開の判断（実装は AI エージェントと分業）</dd></div></dl>
+</div></div>
+<section class="wrap f-sec"><div class="f-no">01 WHY</div><div class="f-body"><h2>きっかけ</h2>
+<p>FF8 のカードゲーム「Triple Triad」のルールの仕組みへのオマージュです。カード・名前・絵・音はすべてオリジナル（または出典を明記したフリー素材）で作っています。</p><p class="pull">相手ごとのルールで戦い、勝ってカードが増え、デッキが育つ。</p><p>原作の面白さの核をこの一文だと考え、それを一人用の「星図巡り」として1本の流れにしました。さらに、置く前にカードを回せる <strong>Pivot</strong> というオリジナルのルールを足して、手札が弱くても逆転の目が生まれるようにしています。</p>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">02 PROCESS</div><div class="f-body"><h2>作るまでの <span class="ital">流れ</span></h2>
+<ol class="timeline">
+<li class="key"><span class="when">Step 1</span><span class="what">ルールエンジンを Unity から切り離して作る</span><span class="why">移植元の TypeScript 版と、975 局の全手について局面・イベント列・合法手が一致することを確かめた。</span></li>
+<li><span class="when">Step 2</span><span class="what">CPU を αβ 探索で作る</span><span class="why">相手の伏せ札は「見えていないカードからサンプリング」して読む。相手の本当の手札だけが違う2つの局面で同じ手を選ぶことをテストで保証し、盗み見をしない。</span></li>
+<li class="key"><span class="when">壁</span><span class="what">Pivot を「両者2回」にしたら先攻が勝ちすぎた</span><span class="why">Hard 同士の自己対戦で先攻勝率 74.8%。</span></li>
+<li class="key"><span class="when">Step 3</span><span class="what">自己対戦で回数を決める</span><span class="why">候補を比べ、先攻1回・後攻2回で 48.2%（目標 45〜55%）に収めた。</span></li>
+<li><span class="when">Step 4</span><span class="what">星図巡り（4星域・12人）とカード絵</span><span class="why">星域ごとのルールとデッキの合計レベル上限、相手ごとの性格。カード絵は SDF とシェーダーで生成。</span></li>
+<li><span class="when">Step 5</span><span class="what">オンライン対戦</span><span class="why">両者が同じ seed から同じ局面を作り、手と局面ハッシュだけを送る P2P 対戦。</span></li>
+<li class="key"><span class="when">2026.10.18</span><span class="what">GitHub Pages と unityroom で公開</span></li>
+</ol>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">03 DESIGN</div><div class="f-body"><h2>工夫したこと</h2>
+<ul class="dots"><li><strong>Unity に依存しない決定論的なルールエンジン。</strong> 同じソースを Unity と dotnet の両方でビルドし、Unity を起動せずに NUnit の 296 件のテストを回す（GitHub Actions でも実行）。乱数は mulberry32、浮動小数点は使わない。</li><li><strong>エンジンはイベント列を返すだけ。</strong> 1手を解決して <code>place / rule / flip / end</code> などのイベント列を返し、表示側はそれを Unity 6 の <code>Awaitable</code> で順に再生する。表示側はルールを判断しない。置く前の予告（裏返るカードが光る）も、エンジンを局面のコピーに当てるだけ。</li><li><strong>WebGL でも止まらない CPU。</strong> スレッドが使えないので、探索を1フレーム 6ms ずつ進める。Hard の1手は平均 0.13 秒、思考中も 59〜60 FPS。</li><li><strong>説明書を読まなくてもわかる。</strong> 星域の相手の初回の台詞で、その星域の新しいルールを1行だけ手ほどきする。</li><li><strong>オンライン対戦の同期。</strong> 手と手の後の局面ハッシュだけを送り、食い違いや手の抜けは検出して中断する。切断は 30 秒の再接続待ちのあと不戦勝。</li></ul>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">04 FIXES</div><div class="f-body"><h2>嫌だったこと → <span class="ital">直したこと</span></h2>
+<div class="fixes">
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>Pivot を両者2回にすると、先攻が 74.8% 勝ってしまう</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>先攻1回・後攻2回の非対称にして 48.2% に（Sudden Death ON は1・1回で 53.0%）</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>CPU が伏せ札を盗み見ているのでは、と疑われる強さ</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>決定化で読み、本当の手札だけが違う局面で同じ手を選ぶことをテストで保証</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>WebGL ではスレッドがなく、CPU の思考中に画面が固まる</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>探索を一定ノードずつに分け、1フレーム 6ms ずつ進める</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>新しいルールが出るたびに説明書を読ませるのは重い</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>初登場の相手の台詞で、その星域の新ルールを1行だけ手ほどき</div></div>
+<div class="fix"><div class="before"><span class="lbl">嫌だったこと</span>星図巡りの難しさが、相手によってばらばら</div><div class="arrow" aria-hidden="true">→</div><div class="after"><span class="lbl">こう直した</span>各相手に「その時点の標準的な手持ち」で挑んだ勝率を測り、主4人を目標の範囲に収めた（例: 星域1の主は勝ち 55〜70%）</div></div>
+</div>
+</div></section>
+<section class="wrap f-sec"><div class="f-no">05 NEXT</div><div class="f-body"><h2>次にやること</h2>
+<p>オンライン対戦は、会社や学校のネットワークなど、つながらない環境があります。中継サーバーを使わずに済ませている今の構成のまま、どこまでつながる環境を増やせるかを調べたいと考えています。</p>
+</div></section>
+
+</article>
+<nav class="wrap pager" aria-label="ほかの作品">
+<a href="shikai.html"><span class="pl">← Prev</span><span class="pt">視界</span></a>
+<a class="next" href="breakout.html"><span class="pl">Next →</span><span class="pt">Breakout</span></a>
+</nav>
+</main>
+<footer class="f-foot" data-ach-end><a href="../">▶ タイトル画面へ戻る</a><br>© 2026 Inoue Hinata · Made in Nagasaki</footer>
+<script src="../assets/site.js?v=20261019a" defer></script>
+<script src="../assets/fun.js?v=20261019a" defer></script>
+<script src="../assets/debug.js?v=20261019a" defer></script>
+</body>
+</html>

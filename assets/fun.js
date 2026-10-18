@@ -11,7 +11,7 @@
     { id: 'title-clear', title: '名前、全部崩しました', desc: 'タイトルのブロックをすべて壊した', hint: '最後まで崩しきる' },
     { id: 'title-items', title: 'アイテムコレクター', desc: 'タイトルのブロック崩しで5種類のアイテムを全部取った', hint: 'タイトルで落ちてくるカプセル' },
     { id: 'read-story', title: '制作の裏側', desc: '制作記事を1本読んだ', hint: '作品の Story' },
-    { id: 'read-all', title: '全巻読破', desc: '制作記事を5本すべて読んだ', hint: '作品の Story を全部' },
+    { id: 'read-all', title: '全巻読破', desc: '制作記事を6本すべて読んだ', hint: '作品の Story を全部' },
     { id: 'highscore', title: 'ハイスコア保持者', desc: 'Breakout で遊んだことがある', hint: 'Breakout を遊ぶ' },
     { id: 'konami', title: '↑↑↓↓←→←→BA', desc: '8bitモードを見つけた', hint: '昔ながらのあのコマンド' },
     { id: 'debug', title: 'デバッグモード', desc: 'F3 でデバッグ表示を開いた', hint: 'ゲームでおなじみのファンクションキー' },
@@ -22,7 +22,7 @@
   ];
   var KEY = 'ach-v1';
   var STORY_KEY = 'stories-read-v1';
-  var STORIES = ['shikai', 'breakout', 'photo-tagger', 'senryu-bot', 'character-counter'];
+  var STORIES = ['shikai', 'edgewise', 'breakout', 'photo-tagger', 'senryu-bot', 'character-counter'];
 
   function load(key) {
     try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) { return []; }
